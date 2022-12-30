@@ -10,23 +10,42 @@ import MKTypography from "components/MKTypography";
 import TransparentBlogCard from "examples/Cards/BlogCards/TransparentBlogCard";
 import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 
-// Images
-import post1 from "assets/images/examples/testimonial-6-2.jpg";
-import post2 from "assets/images/examples/testimonial-6-3.jpg";
-import post3 from "assets/images/examples/blog-9-4.jpg";
-import post4 from "assets/images/examples/blog2.jpg";
-
-function Places(props) {
-  const { data, title } = props;
+function ServiceCategory(props) {
+  const { data } = props;
   return (
     <MKBox component="section" py={2} id="building">
       <Container>
         <Grid container item xs={12} lg={6}>
-          <MKTypography variant="h3" mb={6}>
-            {title}
-          </MKTypography>
+          <MKTypography variant="h3" mb={6}></MKTypography>
         </Grid>
         <Grid container spacing={3}>
+          {data.map((element) => {
+            return (
+              <Grid item xs={12} sm={6} lg={3}>
+                <BackgroundBlogCard
+                  image={element.image}
+                  //image={post1}
+                  title={element.name}
+                  description={element.description}
+                  action={{
+                    type: "internal",
+                    route: element.route,
+                    color: "info",
+                    label: "انقر للمزيد",
+                  }}
+                />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Container>
+    </MKBox>
+  );
+}
+
+export default ServiceCategory;
+
+/*<Grid container spacing={3}>
           {data.map((element) => {
             return (
               <Grid item xs={12} sm={6} lg={3}>
@@ -84,9 +103,4 @@ function Places(props) {
             />
           </Grid>
         </Grid>
-      </Container>
-    </MKBox>
-  );
-}
-
-export default Places;
+      </Container> */

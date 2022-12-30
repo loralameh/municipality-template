@@ -7,9 +7,11 @@ import MKBox from "components/MKBox";
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 
-// MunicipalityServices page sections
-import Posts from "pages/MunicipalityServices/sections/Posts";
+//Default footer
 import DefaultFooter from "examples/Footers/DefaultFooter";
+
+// import ServiceCategory from "pages/MunicipalityServices/sections/ServiceCategory"
+import ServiceCategory from "./sections/ServiceCategory";
 
 // Routes
 import routes from "routes";
@@ -22,16 +24,43 @@ import bgImage from "assets/images/service.jpg";
 import post1 from "assets/images/examples/testimonial-6-2.jpg";
 import post2 from "assets/images/examples/testimonial-6-3.jpg";
 import post3 from "assets/images/examples/blog-9-4.jpg";
-import post4 from "assets/images/examples/blog2.jpg";
 
 function MunicipalityServices() {
-  const data = [
+  // const categories = [
+  //   {
+  //     name: "Rover raised $65 million",
+  //     description:
+  //       "Finding temporary housing for your dog should be as easy as renting an Airbnb. Thats the idea behind Rover ...",
+  //     image: "nhnh",
+  //   },
+  //   {
+  //     title: "Rover raised $65 million",
+  //     description:
+  //       "Finding temporary housing for your dog should be as easy as renting an Airbnb. Thats the idea behind Rover ...",
+  //     category: "/pages/blogs/author",
+  //     requiredDocs: ["strig1", "hghgh"],
+  //     expectedTime: "ghg",
+  //     cost: 20,
+  //   },
+  // ];
+  const Categories = [
     {
-      title: "Rover raised $65 million",
-      description:
-        "Finding temporary housing for your dog should be as easy as renting an Airbnb. Thats the idea behind Rover ...",
-      route: "/pages/blogs/author",
-      image: { post1 },
+      image: post1,
+      name: "الخدمات الاعمارية",
+      description: "بناء و اعمار",
+      route: "/",
+    },
+    {
+      image: post2,
+      name: "المسقفات",
+      description: "المسقفات",
+      route: "/",
+    },
+    {
+      image: post3,
+      name: "الكهرباء",
+      description: "الكهرباء",
+      route: "/",
     },
   ];
   return (
@@ -74,7 +103,7 @@ function MunicipalityServices() {
             boxShadow: ({ boxShadows: { xxl } }) => xxl,
           }}
         >
-          <Posts title="بناء و اعمار" data={data} />
+          <ServiceCategory data={Categories} />
         </Card>
         <MKBox pt={6} px={1} mt={6}>
           <DefaultFooter content={footerRoutes} />

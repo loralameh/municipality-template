@@ -183,7 +183,7 @@ function SignInBasic() {
                       ليس لديك حساب؟
                       <MKTypography
                         component={Link}
-                        to="/authentication/sign-up"
+                        to="/pages/authorization/register"
                         variant="button"
                         color="info"
                         fontWeight="medium"

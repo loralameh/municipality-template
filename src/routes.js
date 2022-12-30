@@ -66,6 +66,7 @@ const routes = [
       {
         name: "خدمات البلدية",
         description: "الخدمات و المعاملات الرسمية",
+        route: "/pages/municipality-services",
         dropdown: true,
         collapse: [
           {
