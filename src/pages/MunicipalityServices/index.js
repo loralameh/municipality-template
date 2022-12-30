@@ -1,3 +1,5 @@
+import React, { useEffect } from "react";
+
 // @mui material components
 import Card from "@mui/material/Card";
 
@@ -24,6 +26,11 @@ import bgImage from "assets/images/service.jpg";
 import post1 from "assets/images/examples/testimonial-6-2.jpg";
 import post2 from "assets/images/examples/testimonial-6-3.jpg";
 import post3 from "assets/images/examples/blog-9-4.jpg";
+
+//redux call
+import { useDispatch, useSelector } from "react-redux";
+import { getServiceCategory } from "features/serviceCategory/serviceCategorySlice";
+import { setSnackbar } from "features/snackBar/snackBarSlice";
 
 function MunicipalityServices() {
   // const categories = [
@@ -63,6 +70,13 @@ function MunicipalityServices() {
       route: "/",
     },
   ];
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getServiceCategory("municipality"));
+  }, []);
+
   return (
     <>
       <DefaultNavbar

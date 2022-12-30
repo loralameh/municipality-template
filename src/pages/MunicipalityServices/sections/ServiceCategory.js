@@ -9,9 +9,11 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React components
 import TransparentBlogCard from "examples/Cards/BlogCards/TransparentBlogCard";
 import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
+import { useDispatch, useSelector } from "react-redux";
 
 function ServiceCategory(props) {
-  const { data } = props;
+  const { categories } = useSelector((store) => store.serviceCategory);
+
   return (
     <MKBox component="section" py={2} id="building">
       <Container>
@@ -19,17 +21,18 @@ function ServiceCategory(props) {
           <MKTypography variant="h3" mb={6}></MKTypography>
         </Grid>
         <Grid container spacing={3}>
-          {data.map((element) => {
+          {categories.map((element) => {
             return (
               <Grid item xs={12} sm={6} lg={3}>
                 <BackgroundBlogCard
-                  image={element.image}
+                  // image={element.image}
                   //image={post1}
                   title={element.name}
-                  description={element.description}
+                  // description={element.description}
                   action={{
                     type: "internal",
-                    route: element.route,
+                    // route: element.route,
+                    route: "/",
                     color: "info",
                     label: "انقر للمزيد",
                   }}
@@ -46,11 +49,11 @@ function ServiceCategory(props) {
 export default ServiceCategory;
 
 /*<Grid container spacing={3}>
-          {data.map((element) => {
+          {categories.map((element) => {
             return (
               <Grid item xs={12} sm={6} lg={3}>
                 <TransparentBlogCard
-                  image={data.image}
+                  image={categories.image}
                   title={element.title}
                   description={element.description}
                   action={{
