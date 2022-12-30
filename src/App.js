@@ -21,6 +21,7 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
+import SnackBar from "examples/SnackBar/SnackBar";
 
 // Create rtl cache
 const cacheRtl = createCache({
@@ -55,7 +56,7 @@ export default function App() {
     <CacheProvider value={cacheRtl}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {/* <SnackBar /> */}
+        <SnackBar />
         <Routes>
           {getRoutes(routes)}
           <Route path="/" element={<Home />} />

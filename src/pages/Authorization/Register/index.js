@@ -38,14 +38,21 @@ import { useFormik } from "formik";
 
 //redux call
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "features/user/userSlice";
-// import { setSnackbar } from "features/snackBar/snackBarSlice";
+import { registerUser } from "features/user/userSlice";
+import { setSnackbar } from "features/snackBar/snackBarSlice";
 
 function SignInBasic() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { snackBarSettings, isLoading, user } = useSelector((store) => store.user);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(setSnackbar(snackBarSettings));
+      navigate("/");
+    }
+  }, [user, dispatch, navigate, snackBarSettings]);
 
   const validation = useFormik({
     initialValues: {
@@ -63,8 +70,7 @@ function SignInBasic() {
       passwordConfirmation: Yup.string().oneOf([Yup.ref("password"), null], "كلمة السر غير مطابقة"),
     }),
     onSubmit: (values) => {
-      console.log("login", values);
-      dispatch(loginUser(values));
+      dispatch(registerUser(values));
     },
   });
   return (
@@ -146,7 +152,6 @@ function SignInBasic() {
                       name="password"
                       label="كلمة السر"
                       type="password"
-                      autoComplete="current-password"
                       value={validation.values.password}
                       onChange={validation.handleChange}
                       error={validation.touched.password && Boolean(validation.errors.password)}
@@ -159,7 +164,7 @@ function SignInBasic() {
                   <MKBox mb={2}>
                     <DefaultInput
                       required={true}
-                      name="password"
+                      name="passwordConfirmation"
                       label="تأكيد كلمة السر"
                       type="password"
                       value={validation.values.passwordConfirmation}
