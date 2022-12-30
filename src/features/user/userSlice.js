@@ -40,19 +40,13 @@ const initialState = {
 //   }
 // );
 
-export const registerUser = createAsyncThunk(
-  "user/registerUser",
-  async (user, thunkAPI) => {
-    return registerUserThunk("/auth/register", user, thunkAPI);
-  }
-);
+export const registerUser = createAsyncThunk("user/registerUser", async (user, thunkAPI) => {
+  return registerUserThunk("/auth/register", user, thunkAPI);
+});
 
-export const loginUser = createAsyncThunk(
-  "user/loginUser",
-  async (user, thunkAPI) => {
-    return loginUserThunk("/auth/login", user, thunkAPI);
-  }
-);
+export const loginUser = createAsyncThunk("user/loginUser", async (user, thunkAPI) => {
+  return loginUserThunk("/auth/login", user, thunkAPI);
+});
 
 // export const updateUser = createAsyncThunk("user/updateUser", updateUserThunk);
 
@@ -123,7 +117,6 @@ const userSlice = createSlice({
       state.isLoading = true;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       const { user, token } = payload;
       state.user = user;
       state.token = token;

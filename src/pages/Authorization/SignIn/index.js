@@ -39,7 +39,7 @@ import { useFormik } from "formik";
 //redux call
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "features/user/userSlice";
-// import { setSnackbar } from "features/snackBar/snackBarSlice";
+import { setSnackbar } from "features/snackBar/snackBarSlice";
 
 function SignInBasic() {
   const dispatch = useDispatch();
@@ -50,12 +50,12 @@ function SignInBasic() {
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     dispatch(setSnackbar(snackBarSettings));
-  //     navigate("/");
-  //   }
-  // }, [user, dispatch, navigate, snackBarSettings]);
+  useEffect(() => {
+    if (user) {
+      dispatch(setSnackbar(snackBarSettings));
+      navigate("/");
+    }
+  }, [user, dispatch, navigate, snackBarSettings]);
 
   const validation = useFormik({
     initialValues: {
@@ -69,7 +69,6 @@ function SignInBasic() {
       password: Yup.string().required("كلمة السر مطلوبة"),
     }),
     onSubmit: (values) => {
-      console.log("login", values);
       dispatch(loginUser(values));
     },
   });
@@ -112,23 +111,6 @@ function SignInBasic() {
                 <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
                   دخول المستخدم
                 </MKTypography>
-                {/* <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <FacebookIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <GitHubIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <GoogleIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                </Grid> */}
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
@@ -149,7 +131,6 @@ function SignInBasic() {
                       name="password"
                       label="كلمة السر"
                       type="password"
-                      autoComplete="current-password"
                       value={validation.values.password}
                       onChange={validation.handleChange}
                       error={validation.touched.password && Boolean(validation.errors.password)}
