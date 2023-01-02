@@ -1,19 +1,3 @@
-/* eslint-disable no-param-reassign */
-/**
-=========================================================
-* Material Kit 2 React - v2.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import { Fragment, useState, useEffect } from "react";
 
 // react-router components
@@ -42,8 +26,19 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
+import Avatar from "@mui/material/Avatar";
 
-function DefaultNavbar({ brand, routes, transparent, light, action, sticky, relative, center }) {
+function DefaultNavbar({
+  brand,
+  routes,
+  transparent,
+  light,
+  action,
+  sticky,
+  relative,
+  center,
+  avatar,
+}) {
   const [dropdown, setDropdown] = useState("");
   const [dropdownEl, setDropdownEl] = useState("");
   const [dropdownName, setDropdownName] = useState("");
@@ -521,6 +516,11 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
                   {action.label}
                 </MKButton>
               ))}
+            {avatar && (
+              <Link to={"/"}>
+                <Avatar>{avatar.name.charAt(0).toUpperCase()}</Avatar>
+              </Link>
+            )}
           </MKBox>
           <MKBox
             display={{ xs: "inline-block", lg: "none" }}
@@ -558,6 +558,7 @@ DefaultNavbar.defaultProps = {
   sticky: false,
   relative: false,
   center: false,
+  avatar: false,
 };
 
 // Typechecking props for the DefaultNavbar
@@ -566,6 +567,12 @@ DefaultNavbar.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
   transparent: PropTypes.bool,
   light: PropTypes.bool,
+  avatar: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  ]),
   action: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.shape({

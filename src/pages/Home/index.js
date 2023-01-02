@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -28,10 +30,19 @@ import Counters from "pages/Home/sections/Counters";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
+//redux call
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "features/user/userSlice";
+
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
 
 function Home() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { user } = useSelector((store) => store.user);
+  const name = user.name;
   return (
     <>
       <DefaultNavbar
@@ -44,6 +55,15 @@ function Home() {
         }}
         sticky
       />
+      {user && (
+        <DefaultNavbar
+          routes={routes}
+          avatar={{
+            name: name,
+          }}
+          sticky
+        />
+      )}
 
       <MKBox
         minHeight="75vh"
