@@ -9,6 +9,9 @@ import Card from "@mui/material/Card";
 import Switch from "@mui/material/Switch";
 import Grid from "@mui/material/Grid";
 import MuiLink from "@mui/material/Link";
+import * as React from "react";
+import Stack from "@mui/material/Stack";
+import CircularProgress from "@mui/material/CircularProgress";
 
 // @mui icons
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -155,10 +158,15 @@ function SignInBasic() {
                       variant="gradient"
                       color="info"
                       fullWidth
+                      disabled={isLoading}
+                      endIcon={
+                        isLoading ? <CircularProgress size={10} sx={{ color: "000nk" }} /> : null
+                      }
                     >
                       دخول
                     </MKButton>
                   </MKBox>
+
                   <MKBox mt={3} mb={1} textAlign="center">
                     <MKTypography variant="button" color="text">
                       ليس لديك حساب؟

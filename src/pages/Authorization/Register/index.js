@@ -188,6 +188,10 @@ function SignInBasic() {
                       variant="gradient"
                       color="info"
                       fullWidth
+                      disabled={isLoading}
+                      endIcon={
+                        isLoading ? <CircularProgress size={10} sx={{ color: "000nk" }} /> : null
+                      }
                     >
                       دخول
                     </MKButton>
