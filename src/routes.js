@@ -31,9 +31,12 @@ import Features from "layouts/sections/page-sections/featuers";
 // Pages
 import AboutMembers from "pages/AboutMunicipality/AboutMembers";
 import Plan from "pages/AboutMunicipality/Plan";
+import Projects from "pages/AboutMunicipality/Projects";
 import ContactUs from "pages/ContactUs";
 import MunicipalityServices from "pages/Services/MunicipalityServices";
 import Profile from "pages/AboutUser/Profile";
+import CitizenService from "pages/AboutUser/CitizenServices";
+import Bills from "pages/AboutUser/Bills";
 
 const routes = [
   {
@@ -56,7 +59,7 @@ const routes = [
       {
         name: "المشاريع المنفذة",
         route: "/pages/about-us/municipality-projects",
-        component: <AboutMembers />,
+        component: <Projects />,
       },
     ],
   },
@@ -133,12 +136,12 @@ export const userRoutes = [
       {
         name: "عرض أعمالي/خدماتي ",
         route: "/pages/citizen-service",
-        component: <AboutMembers />,
+        component: <CitizenService />,
       },
       {
         name: "فاتورة الكهرباء  ",
         route: "/pages/bills/electricity",
-        component: <AboutMembers />,
+        component: <Bills />,
       },
     ],
   },

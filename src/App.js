@@ -16,6 +16,7 @@ import Profile from "pages/AboutUser/Profile";
 
 // Material Kit 2 React routes
 import routes from "routes";
+import { userRoutes } from "routes";
 
 //set right to left direction
 import rtlPlugin from "stylis-plugin-rtl";
@@ -60,10 +61,10 @@ export default function App() {
         <SnackBar />
         <Routes>
           {getRoutes(routes)}
+          {getRoutes(userRoutes)}
           <Route path="/" element={<Home />} />
           <Route path="/pages/authorization/sign-in" element={<SignIn />} />
           <Route path="/pages/authorization/register" element={<Register />} />
-          <Route path="/pages/profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </ThemeProvider>
