@@ -517,7 +517,7 @@ function DefaultNavbar({
                 </MKButton>
               ))}
             {avatar && (
-              <Link to={"/"}>
+              <Link to={"/pages/profile"}>
                 <Avatar>{avatar.name.charAt(0).toUpperCase()}</Avatar>
               </Link>
             )}
