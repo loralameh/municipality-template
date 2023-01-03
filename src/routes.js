@@ -30,6 +30,7 @@ import Features from "layouts/sections/page-sections/featuers";
 
 // Pages
 import AboutMembers from "pages/AboutMunicipality/AboutMembers";
+import Plan from "pages/AboutMunicipality/Plan";
 import ContactUs from "pages/ContactUs";
 import MunicipalityServices from "pages/Services/MunicipalityServices";
 import Profile from "pages/AboutUser/Profile";
@@ -50,7 +51,7 @@ const routes = [
       {
         name: "الخطة الاستراتيجية",
         route: "/pages/about-us/municipality-plan",
-        component: <AboutMembers />,
+        component: <Plan />,
       },
       {
         name: "المشاريع المنفذة",
