@@ -12,7 +12,7 @@ import theme from "assets/theme";
 import Home from "pages/Home";
 import SignIn from "pages/Authorization/SignIn";
 import Register from "pages/Authorization/Register";
-import Profile from "pages/Profile";
+import Profile from "pages/AboutUser/Profile";
 
 // Material Kit 2 React routes
 import routes from "routes";

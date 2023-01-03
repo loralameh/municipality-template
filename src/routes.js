@@ -29,11 +29,10 @@ import PageHeaders from "layouts/sections/page-sections/page-headers";
 import Features from "layouts/sections/page-sections/featuers";
 
 // Pages
-import AboutUs from "pages/AboutUs";
+import AboutMembers from "pages/AboutMunicipality/AboutMembers";
 import ContactUs from "pages/ContactUs";
-import Author from "pages/Author";
-import MunicipalityServices from "pages/MunicipalityServices";
-import Profile from "pages/Profile";
+import MunicipalityServices from "pages/Services/MunicipalityServices";
+import Profile from "pages/AboutUser/Profile";
 
 const routes = [
   {
@@ -45,18 +44,18 @@ const routes = [
       {
         name: "   تعرف على المجلس البلدي الحالي   ",
         route: "/pages/about-us/municipality-members",
-        component: <AboutUs />,
+        component: <AboutMembers />,
       },
 
       {
         name: "الخطة الاستراتيجية",
         route: "/pages/about-us/municipality-plan",
-        component: <Author />,
+        component: <AboutMembers />,
       },
       {
         name: "المشاريع المنفذة",
         route: "/pages/about-us/municipality-projects",
-        component: <AboutUs />,
+        component: <AboutMembers />,
       },
     ],
   },
@@ -133,12 +132,12 @@ export const userRoutes = [
       {
         name: "عرض أعمالي/خدماتي ",
         route: "/pages/citizen-service",
-        component: <Author />,
+        component: <AboutMembers />,
       },
       {
         name: "فاتورة الكهرباء  ",
         route: "/pages/bills/electricity",
-        component: <AboutUs />,
+        component: <AboutMembers />,
       },
     ],
   },

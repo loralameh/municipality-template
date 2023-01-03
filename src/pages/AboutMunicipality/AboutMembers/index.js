@@ -9,15 +9,13 @@ import MKTypography from "components/MKTypography";
 import MKButton from "components/MKButton";
 
 // Material Kit 2 React examples
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+import Navbar from "examples/Navbars";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // About Us page sections
-import Information from "pages/AboutUs/sections/Information";
-import Team from "pages/AboutUs/sections/Team";
-// import Featuring from "pages/AboutUs/sections/Featuring";
-// import Newsletter from "pages/AboutUs/sections/Newsletter";
-import Map from "pages/AboutUs/sections/Map";
+import Information from "pages/AboutMunicipality/AboutMembers/sections/Information";
+import Team from "pages/AboutMunicipality/AboutMembers/sections/Team";
+import Map from "pages/AboutMunicipality/AboutMembers/sections/Map";
 
 // Routes
 import routes from "routes";
@@ -29,17 +27,7 @@ import bgImage from "assets/images/bg-about-us.jpg";
 function AboutUs() {
   return (
     <>
-      <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "internal",
-          route: "/pages/authorization/sign-in",
-          label: "دخول",
-          color: "info",
-        }}
-        transparent
-        light
-      />
+      <Navbar />
       <MKBox
         minHeight="75vh"
         width="100%"
