@@ -33,6 +33,7 @@ import AboutUs from "pages/AboutUs";
 import ContactUs from "pages/ContactUs";
 import Author from "pages/Author";
 import MunicipalityServices from "pages/MunicipalityServices";
+import Profile from "pages/Profile";
 
 const routes = [
   {
@@ -118,4 +119,28 @@ const routes = [
   },
 ];
 
+export const userRoutes = [
+  {
+    name: " الملف الشخصي  ",
+    icon: <Icon>dashboard</Icon>,
+    collapse: [
+      {
+        name: "   الحساب الشخصي ",
+        route: "/pages/profile",
+        component: <Profile />,
+      },
+
+      {
+        name: "عرض أعمالي/خدماتي ",
+        route: "/pages/citizen-service",
+        component: <Author />,
+      },
+      {
+        name: "فاتورة الكهرباء  ",
+        route: "/pages/bills/electricity",
+        component: <AboutUs />,
+      },
+    ],
+  },
+];
 export default routes;

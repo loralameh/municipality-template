@@ -3,7 +3,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 
 // Routes
 import routes from "routes";
-
+import { userRoutes } from "routes";
 //redux call
 import { useSelector } from "react-redux";
 
@@ -28,7 +28,7 @@ const Navbar = () => {
       )}
       {user && (
         <DefaultNavbar
-          routes={routes}
+          routes={[...routes, ...userRoutes]}
           avatar={{
             name: name,
           }}
