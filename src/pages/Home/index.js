@@ -45,23 +45,29 @@ function Home() {
   const name = user.name;
   return (
     <>
-      <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "internal",
-          route: "/pages/authorization/sign-in",
-          label: "دخول",
-          color: "info",
-        }}
-        sticky
-      />
+      {!user && (
+        <DefaultNavbar
+          routes={routes}
+          action={{
+            type: "internal",
+            route: "/pages/authorization/sign-in",
+            label: "دخول",
+            color: "info",
+          }}
+          // sticky
+          transparent
+          light
+        />
+      )}
       {user && (
         <DefaultNavbar
           routes={routes}
           avatar={{
             name: name,
           }}
-          sticky
+          // sticky
+          transparent
+          light
         />
       )}
 
@@ -69,12 +75,23 @@ function Home() {
         minHeight="75vh"
         width="100%"
         sx={{
-          backgroundImage: `url(${bgImage})`,
+          backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
+            `${linearGradient(
+              rgba(gradients.dark.main, 0.6),
+              rgba(gradients.dark.state, 0.6)
+            )}, url(${bgImage})`,
           backgroundSize: "cover",
-          backgroundPosition: "top",
+          backgroundPosition: "center",
           display: "grid",
           placeItems: "center",
         }}
+        // sx={{
+        //   backgroundImage: `url(${bgImage})`,
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "top",
+        //   display: "grid",
+        //   placeItems: "center",
+        // }}
       >
         <Container>
           <Grid
@@ -84,10 +101,10 @@ function Home() {
             lg={7}
             justifyContent="center"
             mx="auto"
-            sx={{
-              backgroundColor: ({ palette: { black }, functions: { rgba } }) =>
-                rgba(black.main, 0.2),
-            }}
+            // sx={{
+            //   backgroundColor: ({ palette: { black }, functions: { rgba } }) =>
+            //     rgba(black.main, 0.2),
+            // }}
           >
             <MKTypography
               variant="h1"
