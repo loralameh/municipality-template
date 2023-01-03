@@ -17,6 +17,7 @@ import MKTypography from "components/MKTypography";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import DefaultInput from "components/LOInput";
+import Navbar from "examples/Navbars";
 
 // Routes
 import routes from "routes";
@@ -70,17 +71,7 @@ function Profile() {
   });
   return (
     <>
-      <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "internal",
-          route: "/pages/authorization/sign-in",
-          label: "دخول",
-          color: "info",
-        }}
-        transparent
-        light
-      />
+      <Navbar />
 
       <MKBox
         minHeight="50vh"
@@ -97,101 +88,6 @@ function Profile() {
           placeItems: "center",
         }}
       >
-        {/* <Grid container mt={{ xs: 12, md: 8 }} py={3}>
-          <Grid item xs={12} md={4}>
-            <MKBox
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              width="100%"
-              height="100%"
-              flexDirection="column"
-            >
-              <MKBox display="flex" justifyContent="center" alignItems="center">
-                <img style={{ width: "10rem" }} src={bgImage} alt="profile" />
-                <IconButton
-                  sx={{
-                    "&:hover": {
-                      opacity: "1",
-                    },
-                    position: "absolute",
-                    opacity: "0.5",
-                  }}
-                  color="primary"
-                  aria-label="upload picture"
-                  component="label"
-                >
-                  <input hidden accept="image/*" type="file" />
-                  <PhotoCamera style={{ fill: "#fff" }} />
-                </IconButton>
-              </MKBox>
-            </MKBox>
-          </Grid>
-          <Grid item xs={12} md={8}>
-            <MKBox
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              width="100%"
-              height="100%"
-            >
-              <MKBox py={{ xs: 3, md: 0 }}>
-                <MKTypography variant="h3" color="white" mb={1}>
-                  لورا لمع
-                  <IconButton color="primary" aria-label="edit profile" component="label">
-                    <EditIcon style={{ fill: "#fff" }} />
-                  </IconButton>
-                </MKTypography>
-                <MKBox display="flex" p={1}>
-                  <MKTypography variant="button" color="white">
-                    <i className="fas fa-phone" />
-                  </MKTypography>
-                  <MKTypography
-                    component="span"
-                    variant="button"
-                    color="white"
-                    opacity={0.8}
-                    ml={2}
-                    fontWeight="regular"
-                  >
-                    71441965{" "}
-                  </MKTypography>
-                </MKBox>
-                <MKBox display="flex" color="white" p={1}>
-                  <MKTypography variant="button" color="white">
-                    <i className="fas fa-envelope" />
-                  </MKTypography>
-                  <MKTypography
-                    component="span"
-                    variant="button"
-                    color="white"
-                    opacity={0.8}
-                    ml={2}
-                    fontWeight="regular"
-                  >
-                    hello@creative-tim.com
-                  </MKTypography>
-                </MKBox>
-                <MKBox display="flex" color="white" p={1}>
-                  <MKTypography variant="button" color="white">
-                    <i className="fas fa-map-marker-alt" />
-                  </MKTypography>
-                  <MKTypography
-                    component="span"
-                    variant="button"
-                    color="white"
-                    opacity={0.8}
-                    ml={2}
-                    fontWeight="regular"
-                  >
-                    حي صفيفا
-                  </MKTypography>
-                </MKBox>
-              </MKBox>
-            </MKBox>
-          </Grid>
-        </Grid> */}
-
         <Container>
           <Grid container item xs={12} lg={7} justifyContent="center" mx="auto">
             <MKTypography
@@ -209,6 +105,7 @@ function Profile() {
           </Grid>
         </Container>
       </MKBox>
+
       <Card
         sx={{
           p: 2,
