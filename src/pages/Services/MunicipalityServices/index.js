@@ -7,7 +7,7 @@ import Card from "@mui/material/Card";
 import MKBox from "components/MKBox";
 
 // Material Kit 2 React examples
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+import Navbar from "examples/Navbars";
 
 //Default footer
 import DefaultFooter from "examples/Footers/DefaultFooter";
@@ -79,16 +79,7 @@ function MunicipalityServices() {
 
   return (
     <>
-      <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "internal",
-          route: "/pages/authorization/sign-in",
-          label: "دخول",
-          color: "info",
-        }}
-        sticky
-      />
+      <Navbar />
 
       <MKBox bgColor="white">
         <MKBox
@@ -106,6 +97,7 @@ function MunicipalityServices() {
             placeItems: "center",
           }}
         />
+
         <Card
           sx={{
             p: 2,
