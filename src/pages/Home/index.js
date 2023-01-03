@@ -14,6 +14,7 @@ import MKSocialButton from "components/MKSocialButton";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
+import Navbar from "examples/Navbars";
 
 // Home page sections
 import Counters from "pages/Home/sections/Counters";
@@ -42,35 +43,9 @@ function Home() {
   const navigate = useNavigate();
 
   const { user } = useSelector((store) => store.user);
-  const name = user.name;
   return (
     <>
-      {!user && (
-        <DefaultNavbar
-          routes={routes}
-          action={{
-            type: "internal",
-            route: "/pages/authorization/sign-in",
-            label: "دخول",
-            color: "info",
-          }}
-          // sticky
-          transparent
-          light
-        />
-      )}
-      {user && (
-        <DefaultNavbar
-          routes={routes}
-          avatar={{
-            name: name,
-          }}
-          // sticky
-          transparent
-          light
-        />
-      )}
-
+      <Navbar />
       <MKBox
         minHeight="75vh"
         width="100%"
@@ -85,27 +60,9 @@ function Home() {
           display: "grid",
           placeItems: "center",
         }}
-        // sx={{
-        //   backgroundImage: `url(${bgImage})`,
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "top",
-        //   display: "grid",
-        //   placeItems: "center",
-        // }}
       >
         <Container>
-          <Grid
-            container
-            item
-            xs={12}
-            lg={7}
-            justifyContent="center"
-            mx="auto"
-            // sx={{
-            //   backgroundColor: ({ palette: { black }, functions: { rgba } }) =>
-            //     rgba(black.main, 0.2),
-            // }}
-          >
+          <Grid container item xs={12} lg={7} justifyContent="center" mx="auto">
             <MKTypography
               variant="h1"
               color="white"
@@ -119,13 +76,7 @@ function Home() {
             >
               بلدية حاصبيا
             </MKTypography>
-            <MKTypography
-              variant="body1"
-              color="white"
-              textAlign="center"
-              px={{ xs: 6, lg: 12 }}
-              // mt={1}
-            >
+            <MKTypography variant="body1" color="white" textAlign="center" px={{ xs: 6, lg: 12 }}>
               مرحبًا بكم في موقع بلدية حاصبيا ، المصدر الخاص بك للحصول على معلومات حول الحكومة
               المحلية والخدمات والأحداث.
             </MKTypography>
