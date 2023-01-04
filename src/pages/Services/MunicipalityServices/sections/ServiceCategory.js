@@ -11,28 +11,28 @@ import TransparentBlogCard from "examples/Cards/BlogCards/TransparentBlogCard";
 import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 import { useDispatch, useSelector } from "react-redux";
 
-function ServiceCategory(props) {
+function ServiceCategory() {
   const { categories } = useSelector((store) => store.serviceCategory);
 
   return (
     <MKBox component="section" py={2} id="building">
       <Container>
         <Grid container item xs={12} lg={6}>
-          <MKTypography variant="h3" mb={6}></MKTypography>
+          <MKTypography variant="h3" mb={6}>
+            مجوعات الخدمات
+          </MKTypography>
         </Grid>
         <Grid container spacing={3}>
           {categories.map((element) => {
             return (
               <Grid item xs={12} sm={6} lg={3}>
                 <BackgroundBlogCard
-                  // image={element.image}
-                  //image={post1}
+                  image={element.image}
                   title={element.name}
-                  // description={element.description}
+                  description={element.description}
                   action={{
                     type: "internal",
-                    // route: element.route,
-                    route: "/",
+                    route: `/pages/municipality-services/${element._id}`,
                     color: "info",
                     label: "انقر للمزيد",
                   }}

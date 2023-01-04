@@ -34,7 +34,7 @@ const serviceCategorySlice = createSlice({
         type: "success",
         message: `تم الإرسال`,
       };
-      state.categories = payload["categories"];
+      state.categories = payload;
     },
     [getServiceCategory.rejected]: (state, { payload }) => {
       state.isLoading = false;

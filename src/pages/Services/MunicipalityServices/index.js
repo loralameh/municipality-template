@@ -33,44 +33,6 @@ import { getServiceCategory } from "features/serviceCategory/serviceCategorySlic
 import { setSnackbar } from "features/snackBar/snackBarSlice";
 
 function MunicipalityServices() {
-  // const categories = [
-  //   {
-  //     name: "Rover raised $65 million",
-  //     description:
-  //       "Finding temporary housing for your dog should be as easy as renting an Airbnb. Thats the idea behind Rover ...",
-  //     image: "nhnh",
-  //   },
-  //   {
-  //     title: "Rover raised $65 million",
-  //     description:
-  //       "Finding temporary housing for your dog should be as easy as renting an Airbnb. Thats the idea behind Rover ...",
-  //     category: "/pages/blogs/author",
-  //     requiredDocs: ["strig1", "hghgh"],
-  //     expectedTime: "ghg",
-  //     cost: 20,
-  //   },
-  // ];
-  const Categories = [
-    {
-      image: post1,
-      name: "الخدمات الاعمارية",
-      description: "بناء و اعمار",
-      route: "/",
-    },
-    {
-      image: post2,
-      name: "المسقفات",
-      description: "المسقفات",
-      route: "/",
-    },
-    {
-      image: post3,
-      name: "الكهرباء",
-      description: "الكهرباء",
-      route: "/",
-    },
-  ];
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -109,7 +71,7 @@ function MunicipalityServices() {
             boxShadow: ({ boxShadows: { xxl } }) => xxl,
           }}
         >
-          <ServiceCategory data={Categories} />
+          <ServiceCategory />
         </Card>
         <MKBox pt={6} px={1} mt={6}>
           <DefaultFooter content={footerRoutes} />

@@ -13,6 +13,7 @@ import Home from "pages/Home";
 import SignIn from "pages/Authorization/SignIn";
 import Register from "pages/Authorization/Register";
 import Profile from "pages/AboutUser/Profile";
+import AllCategoryServices from "pages/Services/MunicipalityServices/AllCategoryServices";
 
 // Material Kit 2 React routes
 import routes from "routes";
@@ -65,6 +66,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/pages/authorization/sign-in" element={<SignIn />} />
           <Route path="/pages/authorization/register" element={<Register />} />
+          <Route path="/pages/municipality-services/:id" element={<AllCategoryServices />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </ThemeProvider>
