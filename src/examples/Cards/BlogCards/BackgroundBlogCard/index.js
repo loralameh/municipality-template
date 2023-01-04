@@ -54,9 +54,9 @@ function BackgroundBlogCard({ image, title, description, action }) {
       }}
     >
       <MKBox p={3}>
-        <MKBox minHeight="20.625rem" my="auto" py={3}>
+        <MKBox minHeight="18rem" my="auto" py={3}>
           <MKTypography
-            variant="h2"
+            variant="h3"
             color="white"
             mb={1}
             sx={({ breakpoints, typography: { size } }) => ({

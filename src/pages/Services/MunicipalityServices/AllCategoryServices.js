@@ -42,6 +42,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createContactUsMessage } from "features/contact-us/ContactUsSlice";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
 import { PlaceRounded } from "@mui/icons-material";
+import { useParams } from "react-router-dom";
 
 function AllCategoryServices() {
   const dispatch = useDispatch();
@@ -49,11 +50,11 @@ function AllCategoryServices() {
   const { user } = useSelector((store) => store.user);
   const { snackBarSettings, isLoading } = useSelector((store) => store.contactUs);
 
+  const { id } = useParams();
   useEffect(() => {
-    if (user) {
-      dispatch(setSnackbar(snackBarSettings));
-    }
-  }, [dispatch, snackBarSettings]);
+    //det datta
+    console.log(id);
+  }, []);
 
   return (
     <>

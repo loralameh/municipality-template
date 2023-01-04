@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 
 // @mui material components
 import Card from "@mui/material/Card";
-
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
 import Navbar from "examples/Navbars";
@@ -58,7 +60,24 @@ function MunicipalityServices() {
             display: "grid",
             placeItems: "center",
           }}
-        />
+        >
+          <Container>
+            <Grid container item xs={12} lg={7} justifyContent="center" mx="auto">
+              <MKTypography
+                variant="h1"
+                color="white"
+                mb={1}
+                sx={({ breakpoints, typography: { size } }) => ({
+                  [breakpoints.down("md")]: {
+                    fontSize: size["3xl"],
+                  },
+                })}
+              >
+                خدمات البلدية
+              </MKTypography>
+            </Grid>
+          </Container>
+        </MKBox>
 
         <Card
           sx={{
