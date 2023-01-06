@@ -37,7 +37,7 @@ import MunicipalityServices from "pages/Services/MunicipalityServices";
 import Profile from "pages/AboutUser/Profile";
 import CitizenService from "pages/AboutUser/CitizenServices";
 import Bills from "pages/AboutUser/Bills";
-
+import Logout from "pages/Authorization/Logout";
 const routes = [
   {
     name: " عن بلدية حاصبيا",
@@ -126,22 +126,37 @@ export const userRoutes = [
   {
     name: " الملف الشخصي  ",
     icon: <Icon>dashboard</Icon>,
+    columns: 1,
+    rowsPerColumn: 2,
     collapse: [
       {
-        name: "   الحساب الشخصي ",
-        route: "/pages/profile",
-        component: <Profile />,
-      },
+        collapse: [
+          {
+            name: "   الحساب الشخصي ",
+            route: "/pages/profile",
+            component: <Profile />,
+          },
 
-      {
-        name: "عرض أعمالي/خدماتي ",
-        route: "/pages/citizen-service",
-        component: <CitizenService />,
+          {
+            name: "عرض أعمالي/خدماتي ",
+            route: "/pages/citizen-service",
+            component: <CitizenService />,
+          },
+          {
+            name: "فاتورة الكهرباء  ",
+            route: "/pages/bills/electricity",
+            component: <Bills />,
+          },
+        ],
       },
       {
-        name: "فاتورة الكهرباء  ",
-        route: "/pages/bills/electricity",
-        component: <Bills />,
+        collapse: [
+          {
+            name: "خروج",
+            route: "/pages/authentication/logout",
+            component: <Logout />,
+          },
+        ],
       },
     ],
   },
