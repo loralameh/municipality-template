@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -39,20 +41,20 @@ import { useFormik } from "formik";
 
 //redux call
 import { useDispatch, useSelector } from "react-redux";
-import { createContactUsMessage } from "features/contact-us/ContactUsSlice";
+import { getMunicipalityServices } from "features/municipalityService/municipalityServiceSlice";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
 import { PlaceRounded } from "@mui/icons-material";
-import { useParams } from "react-router-dom";
 
 function AllCategoryServices() {
   const dispatch = useDispatch();
 
-  const { user } = useSelector((store) => store.user);
+  const { municipalityServices } = useSelector((store) => store.municipalityServices);
   const { snackBarSettings, isLoading } = useSelector((store) => store.contactUs);
 
   const { id } = useParams();
   useEffect(() => {
     //det datta
+    dispatch(getMunicipalityServices(id));
     console.log(id);
   }, []);
 
@@ -109,7 +111,7 @@ function AllCategoryServices() {
             <Grid item xs={12} lg={12}>
               <Grid container justifyContent="flex-start">
                 <Grid item xs={12}>
-                  <Service />
+                  <Service municipalityServices={municipalityServices} />
                 </Grid>
               </Grid>
             </Grid>
