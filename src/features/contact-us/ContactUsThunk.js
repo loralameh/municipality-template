@@ -1,5 +1,4 @@
 import customFetch, { checkForUnauthorizedResponse } from "../../utils/axios";
-import { logoutUser } from "./ContactUsSlice";
 
 export const createContactUsMessageThunk = async (url, values, thunkAPI) => {
   try {

@@ -7,7 +7,6 @@ import MKBox from "components/MKBox";
 
 // Material Kit 2 React examples
 import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
-import CenteredBlogCard from "examples/Cards/BlogCards/CenteredBlogCard";
 
 function Information() {
   return (

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 // react-router-dom components
 import { Link } from "react-router-dom";
@@ -6,20 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
-import Switch from "@mui/material/Switch";
 import Grid from "@mui/material/Grid";
-import MuiLink from "@mui/material/Link";
 import CircularProgress from "@mui/material/CircularProgress";
-
-// @mui icons
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import GoogleIcon from "@mui/icons-material/Google";
 
 // components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
 import DefaultInput from "components/LOInput";
 

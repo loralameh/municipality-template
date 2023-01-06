@@ -4,59 +4,37 @@ import { useParams } from "react-router-dom";
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import Icon from "@mui/material/Icon";
-import Stack from "@mui/material/Stack";
-import { Button, TextField, Card } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import { Card } from "@mui/material";
+
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
-import MKInput from "components/MKInput";
-import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
-import DefaultInput from "components/LOInput";
 import Navbar from "examples/Navbars";
-import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 
-import Service from "pages/Services/MunicipalityServices/sections/Service";
-// Routes
-import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Image & icons
 import bgImage2 from "assets/images/shapes/waves-white.svg";
-import bgImage from "assets/images/illustrations/illustration-reset.jpg";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import EmailIcon from "@mui/icons-material/Email";
-import LiveHelpIcon from "@mui/icons-material/LiveHelp";
-import EditIcon from "@mui/icons-material/Edit";
-
-//validation
-import * as Yup from "yup";
-import { useFormik } from "formik";
 
 //redux call
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getMunicipalityServices } from "features/municipalityService/municipalityServiceSlice";
-import { setSnackbar } from "features/snackBar/snackBarSlice";
-import { PlaceRounded } from "@mui/icons-material";
 
 function AllCategoryServices() {
   const dispatch = useDispatch();
 
-  const { municipalityServices } = useSelector((store) => store.municipalityServices);
-  const { snackBarSettings, isLoading } = useSelector((store) => store.contactUs);
+  // const { municipalityServices } = useSelector((store) => store.municipalityServices);
+  // const { snackBarSettings, isLoading } = useSelector((store) => store.contactUs);
 
   const { id } = useParams();
   useEffect(() => {
     //det datta
     dispatch(getMunicipalityServices(id));
     console.log(id);
-  }, []);
+  }, [dispatch, id]);
 
   return (
     <>
@@ -89,7 +67,7 @@ function AllCategoryServices() {
                 },
               })}
             >
-              الخطة الاستراتيجية
+              all services in this categpry
             </MKTypography>
           </Grid>
         </Container>
@@ -106,7 +84,7 @@ function AllCategoryServices() {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        <Container>
+        {/* <Container>
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} lg={12}>
               <Grid container justifyContent="flex-start">
@@ -116,7 +94,7 @@ function AllCategoryServices() {
               </Grid>
             </Grid>
           </Grid>
-        </Container>
+        </Container> */}
       </Card>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />

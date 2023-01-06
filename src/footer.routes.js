@@ -10,7 +10,7 @@ import logoCT from "assets/images/logo.png";
 
 const date = new Date().getFullYear();
 
-export default {
+let footer = {
   brand: {
     name: "بلدية حاصبيا",
     image: logoCT,
@@ -83,3 +83,4 @@ export default {
     </MKTypography>
   ),
 };
+export default footer;

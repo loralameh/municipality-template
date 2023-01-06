@@ -18,28 +18,21 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import ServiceCategory from "./sections/ServiceCategory";
 
 // Routes
-import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Images
 import bgImage from "assets/images/service.jpg";
 
-// Images
-import post1 from "assets/images/examples/testimonial-6-2.jpg";
-import post2 from "assets/images/examples/testimonial-6-3.jpg";
-import post3 from "assets/images/examples/blog-9-4.jpg";
-
 //redux call
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getServiceCategory } from "features/serviceCategory/serviceCategorySlice";
-import { setSnackbar } from "features/snackBar/snackBarSlice";
 
 function MunicipalityServices() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getServiceCategory("municipality"));
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

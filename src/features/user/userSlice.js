@@ -7,14 +7,7 @@ import {
   getUserFromLocalStorage,
   removeUserFromLocalStorage,
 } from "utils/localStorage";
-import {
-  loginUserThunk,
-  registerUserThunk,
-  updateUserThunk,
-  removeUserThunk,
-  clearStoreThunk,
-  getUsersThunk,
-} from "./userThunk";
+import { loginUserThunk, registerUserThunk } from "./userThunk";
 
 const initialState = {
   isLoading: false,

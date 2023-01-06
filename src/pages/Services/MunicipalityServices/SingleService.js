@@ -2,45 +2,27 @@ import React, { useEffect } from "react";
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import Icon from "@mui/material/Icon";
-import Stack from "@mui/material/Stack";
-import { Button, TextField, Card } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
+
+import { Card } from "@mui/material";
+
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
-import MKInput from "components/MKInput";
-import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
-import DefaultInput from "components/LOInput";
 import Navbar from "examples/Navbars";
-import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 
 // Routes
-import routes from "routes";
+
 import footerRoutes from "footer.routes";
 
 // Image & icons
 import bgImage2 from "assets/images/shapes/waves-white.svg";
-import bgImage from "assets/images/illustrations/illustration-reset.jpg";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import EmailIcon from "@mui/icons-material/Email";
-import LiveHelpIcon from "@mui/icons-material/LiveHelp";
-import EditIcon from "@mui/icons-material/Edit";
-
-//validation
-import * as Yup from "yup";
-import { useFormik } from "formik";
 
 //redux call
 import { useDispatch, useSelector } from "react-redux";
-import { createContactUsMessage } from "features/contact-us/ContactUsSlice";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
-import { PlaceRounded } from "@mui/icons-material";
 
 function SingleService() {
   const dispatch = useDispatch();

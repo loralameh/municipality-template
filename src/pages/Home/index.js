@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -8,10 +6,8 @@ import Card from "@mui/material/Card";
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-import MKSocialButton from "components/MKSocialButton";
 
 // Material Kit 2 React examples
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
 import Navbar from "examples/Navbars";
@@ -27,22 +23,19 @@ import Counters from "pages/Home/sections/Counters";
 // Home page components
 // import BuiltByDevelopers from "pages/Home/components/BuiltByDevelopers";
 
-// Routes
-import routes from "routes";
 import footerRoutes from "footer.routes";
 
 //redux call
-import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "features/user/userSlice";
+// import { useDispatch, useSelector } from "react-redux";
 
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
 
 function Home() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
-  const { user } = useSelector((store) => store.user);
+  // const { user } = useSelector((store) => store.user);
   return (
     <>
       <Navbar />

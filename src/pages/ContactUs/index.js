@@ -5,18 +5,14 @@ import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
-import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
 import Navbar from "examples/Navbars";
 import DefaultFooter from "examples/Footers/DefaultFooter";
-import DefaultInput from "components/LOInput";
-import { Button, TextField, Container, Card } from "@mui/material";
+import { TextField, Container, Card } from "@mui/material";
 
-// Routes
-import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Image & icons
@@ -31,20 +27,19 @@ import { useFormik } from "formik";
 
 //redux call
 import { useDispatch, useSelector } from "react-redux";
-import { createContactUsMessage } from "features/contact-us/ContactUsSlice";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
 
 function ContactUs() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((store) => store.user);
-  const { snackBarSettings, isLoading } = useSelector((store) => store.contactUs);
+  const { snackBarSettings } = useSelector((store) => store.contactUs);
 
   useEffect(() => {
     if (user) {
       dispatch(setSnackbar(snackBarSettings));
     }
-  }, [dispatch, snackBarSettings]);
+  }, [dispatch, snackBarSettings, user]);
 
   const validation = useFormik({
     initialValues: {

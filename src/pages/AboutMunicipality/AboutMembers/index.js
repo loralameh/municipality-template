@@ -6,7 +6,6 @@ import Card from "@mui/material/Card";
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-import MKButton from "components/MKButton";
 
 // Material Kit 2 React examples
 import Navbar from "examples/Navbars";
@@ -18,7 +17,6 @@ import Team from "pages/AboutMunicipality/AboutMembers/sections/Team";
 import Map from "pages/AboutMunicipality/AboutMembers/sections/Map";
 
 // Routes
-import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Images

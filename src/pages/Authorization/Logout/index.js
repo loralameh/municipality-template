@@ -12,7 +12,7 @@ function SignInBasic() {
   useEffect(() => {
     dispatch(logoutUser());
     navigate("/");
-  }, []);
+  }, [dispatch, navigate]);
 
   return <div></div>;
 }

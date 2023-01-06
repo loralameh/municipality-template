@@ -2,73 +2,41 @@ import React, { useEffect } from "react";
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import Icon from "@mui/material/Icon";
-import Stack from "@mui/material/Stack";
-import { Button, TextField, Card } from "@mui/material";
+import { Card } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
-import MKInput from "components/MKInput";
-import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
-import DefaultInput from "components/LOInput";
 import Navbar from "examples/Navbars";
 
 // Routes
-import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Image & icons
 import bgImage2 from "assets/images/shapes/waves-white.svg";
 import bgImage from "assets/images/illustrations/illustration-reset.jpg";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import EmailIcon from "@mui/icons-material/Email";
-import LiveHelpIcon from "@mui/icons-material/LiveHelp";
 import EditIcon from "@mui/icons-material/Edit";
-
-//validation
-import * as Yup from "yup";
-import { useFormik } from "formik";
 
 //redux call
 import { useDispatch, useSelector } from "react-redux";
-import { createContactUsMessage } from "features/contact-us/ContactUsSlice";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
 
 function Profile() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((store) => store.user);
-  const { snackBarSettings, isLoading } = useSelector((store) => store.contactUs);
+  const { snackBarSettings } = useSelector((store) => store.contactUs);
 
   useEffect(() => {
     if (user) {
       dispatch(setSnackbar(snackBarSettings));
     }
-  }, [dispatch, snackBarSettings]);
+  }, [dispatch, snackBarSettings, user]);
 
-  const validation = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
-    validationSchema: Yup.object({
-      name: Yup.string().required("الاسم مطلوب"),
-      email: Yup.string().required("البريد الالكتروني مطلوب"),
-      message: Yup.string().required("الرسالة مطلوبة"),
-    }),
-    onSubmit: (values, { resetForm }) => {
-      console.log("login", values);
-      // dispatch(createContactUsMessage(values));
-      resetForm();
-    },
-  });
   return (
     <>
       <Navbar />
