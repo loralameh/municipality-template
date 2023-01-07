@@ -1,30 +1,25 @@
 import React, { useEffect } from "react";
 
-// @mui material components
+// @mui components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
+
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
+import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 
-// Material Kit 2 React examples
+// navigation
 import Navbar from "examples/Navbars";
-
-//Default footer
 import DefaultFooter from "examples/Footers/DefaultFooter";
-
-// import ServiceCategory from "pages/MunicipalityServices/sections/ServiceCategory"
-import ServiceCategory from "./sections/ServiceCategory";
-
-// Routes
 import footerRoutes from "footer.routes";
 
 // Images
 import bgImage from "assets/images/service.jpg";
 
 //redux call
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getServiceCategory } from "features/serviceCategory/serviceCategorySlice";
 
 function MunicipalityServices() {
@@ -33,6 +28,8 @@ function MunicipalityServices() {
   useEffect(() => {
     dispatch(getServiceCategory("municipality"));
   }, [dispatch]);
+
+  const { categories } = useSelector((store) => store.serviceCategory);
 
   return (
     <>
@@ -83,7 +80,35 @@ function MunicipalityServices() {
             boxShadow: ({ boxShadows: { xxl } }) => xxl,
           }}
         >
-          <ServiceCategory />
+          <MKBox component="section" py={2} id="building">
+            <Container>
+              <Grid container item xs={12} lg={6}>
+                <MKTypography variant="h3" mb={6}>
+                  مجوعات الخدمات
+                </MKTypography>
+              </Grid>
+              <Grid container spacing={3}>
+                {categories.map((element) => {
+                  return (
+                    <Grid key={element._id} item xs={12} sm={6} lg={3}>
+                      {/* goes to AllCategoryService  */}
+                      <BackgroundBlogCard
+                        image={element.image}
+                        title={element.name}
+                        description={element.description}
+                        action={{
+                          type: "internal",
+                          route: `/pages/municipality-services/${element._id}`,
+                          color: "info",
+                          label: "انقر للمزيد",
+                        }}
+                      />
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </Container>
+          </MKBox>
         </Card>
         <MKBox pt={6} px={1} mt={6}>
           <DefaultFooter content={footerRoutes} />

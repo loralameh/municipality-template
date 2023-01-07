@@ -10,31 +10,31 @@ import { Card } from "@mui/material";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
-// Material Kit 2 React examples
+// Navigation
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import Navbar from "examples/Navbars";
-
 import footerRoutes from "footer.routes";
 
 // Image & icons
 import bgImage2 from "assets/images/shapes/waves-white.svg";
 
-//redux call
-import { useDispatch } from "react-redux";
+//redux calls
+import { useDispatch, useSelector } from "react-redux";
 import { getMunicipalityServices } from "features/municipalityService/municipalityServiceSlice";
 
+import Service from "./sections/Service";
 function AllCategoryServices() {
   const dispatch = useDispatch();
 
-  // const { municipalityServices } = useSelector((store) => store.municipalityServices);
-  // const { snackBarSettings, isLoading } = useSelector((store) => store.contactUs);
+  const { municipalityServices } = useSelector((store) => store.municipalityServices);
+  const { categoryId } = useParams();
 
-  const { id } = useParams();
   useEffect(() => {
-    //det datta
-    dispatch(getMunicipalityServices(id));
-    console.log(id);
-  }, [dispatch, id]);
+    dispatch(getMunicipalityServices(categoryId));
+    console.log(categoryId);
+  }, [dispatch, categoryId]);
+
+  console.log(municipalityServices);
 
   return (
     <>
@@ -84,17 +84,9 @@ function AllCategoryServices() {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        {/* <Container>
-          <Grid container spacing={3} alignItems="center">
-            <Grid item xs={12} lg={12}>
-              <Grid container justifyContent="flex-start">
-                <Grid item xs={12}>
-                  <Service municipalityServices={municipalityServices} />
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Container> */}
+        <Container>
+          <Service municipalityServices={municipalityServices} />
+        </Container>
       </Card>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />

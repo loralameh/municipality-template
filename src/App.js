@@ -25,6 +25,7 @@ import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import SnackBar from "examples/SnackBar/SnackBar";
+import SingleService from "pages/Services/MunicipalityServices/SingleService";
 
 // Create rtl cache
 const cacheRtl = createCache({
@@ -49,7 +50,7 @@ export default function App() {
       }
 
       if (route.route) {
-        return <Route exact path={route.route} element={route.component} key={route.key} />;
+        return <Route exact path={route.route} element={route.component} key={route.route} />;
       }
 
       return null;
@@ -66,7 +67,14 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/pages/authorization/sign-in" element={<SignIn />} />
           <Route path="/pages/authorization/register" element={<Register />} />
-          <Route path="/pages/municipality-services/:id" element={<AllCategoryServices />} />
+          <Route
+            path="/pages/municipality-services/:categoryId"
+            element={<AllCategoryServices />}
+          />
+          <Route
+            path="/pages/municipality-services/:categoryId/service/:serviceId"
+            element={<SingleService />}
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </ThemeProvider>

@@ -28,12 +28,8 @@ const municipalityServicesSlice = createSlice({
     },
     [getMunicipalityServices.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.snackBarSettings = {
-        open: true,
-        type: "success",
-        message: `تم الإرسال`,
-      };
       state.municipalityServices = payload;
+      console.log(payload);
     },
     [getMunicipalityServices.rejected]: (state, { payload }) => {
       state.isLoading = false;

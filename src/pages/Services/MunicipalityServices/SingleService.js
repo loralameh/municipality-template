@@ -12,7 +12,9 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React examples
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import Navbar from "examples/Navbars";
-
+import Icon from "@mui/material/Icon";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 // Routes
 
 import footerRoutes from "footer.routes";
@@ -24,7 +26,7 @@ import bgImage2 from "assets/images/shapes/waves-white.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
 
-function SingleService() {
+function SingleService(props) {
   const dispatch = useDispatch();
 
   const { user } = useSelector((store) => store.user);
@@ -35,6 +37,7 @@ function SingleService() {
       dispatch(setSnackbar(snackBarSettings));
     }
   }, [dispatch, snackBarSettings]);
+  console.log(props);
 
   return (
     <>
@@ -67,7 +70,7 @@ function SingleService() {
                 },
               })}
             >
-              الخطة الاستراتيجية
+              single service page
             </MKTypography>
           </Grid>
         </Container>
@@ -85,17 +88,45 @@ function SingleService() {
         }}
       >
         <Container>
-          <Grid container spacing={3} alignItems="center">
-            <Grid item xs={12} lg={12}>
-              <Grid container justifyContent="flex-start">
-                <Grid item xs={12} md={4}>
-                  checkbox here
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
+          <MKBox lineHeight={1}>
+            <MKTypography display="block" variant="h4" fontWeight="bold" mb={0.5}>
+              lora
+            </MKTypography>
+            <MKTypography
+              variant="button"
+              fontWeight="regular"
+              lineHeight={1}
+              color="text"
+              sx={{ display: "flex", alignItems: "center" }}
+            >
+              <AccessTimeIcon fontSize="small" />
+              &nbsp; 3 days
+            </MKTypography>
+            <MKTypography
+              variant="button"
+              fontWeight="regular"
+              lineHeight={1}
+              color="text"
+              sx={{ display: "flex", alignItems: "center" }}
+            >
+              <AttachMoneyIcon fontSize="small" />
+              &nbsp; 25,000
+            </MKTypography>
+          </MKBox>
+          <MKTypography variant="body2" color="text" my={2}>
+            hjhjh hhjh
+          </MKTypography>
+
+          <MKTypography display="block" variant="h5" fontWeight="bold" mb={0.5}>
+            المستندات المطلوبة
+          </MKTypography>
+
+          <MKTypography variant="body2" color="text" my={2}>
+            1- تاتان
+          </MKTypography>
         </Container>
       </Card>
+
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
