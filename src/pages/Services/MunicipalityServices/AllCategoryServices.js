@@ -34,8 +34,6 @@ function AllCategoryServices() {
     console.log(categoryId);
   }, [dispatch, categoryId]);
 
-  console.log(municipalityServices);
-
   return (
     <>
       <Navbar />
@@ -84,9 +82,17 @@ function AllCategoryServices() {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        <Container>
-          <Service municipalityServices={municipalityServices} />
-        </Container>
+        {municipalityServices.length > 0 && (
+          <Container>
+            <Service municipalityServices={municipalityServices} />
+          </Container>
+        )}
+
+        {municipalityServices.length == 0 && (
+          <MKBox minHeight="10rem" justifyContent="center" alignItems="center" display="flex">
+            لم يتم اضافة أي خدمات
+          </MKBox>
+        )}
       </Card>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />

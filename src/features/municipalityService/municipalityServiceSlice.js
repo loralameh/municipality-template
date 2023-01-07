@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getMunicipalityServicesThunk } from "features/municipalityService/municipalityServiceThunk";
+import {
+  getMunicipalityServicesThunk,
+  getMunicipalityServiceThunk,
+} from "features/municipalityService/municipalityServiceThunk";
 
 const initialState = {
   isLoading: false,
@@ -9,12 +12,20 @@ const initialState = {
     message: "",
   },
   municipalityServices: [],
+  municipalityService: undefined,
 };
 
 export const getMunicipalityServices = createAsyncThunk(
-  "municipaltyServices/getMunicipalityServices",
+  "municipaltyServices/getAllMunicipalityServices",
   async (categoryId, thunkAPI) => {
     return getMunicipalityServicesThunk(`/municipality-service?category=${categoryId}`, thunkAPI);
+  }
+);
+
+export const getMunicipalityService = createAsyncThunk(
+  "municipaltyServices/getSingleMunicipalityService",
+  async (serviceId, thunkAPI) => {
+    return getMunicipalityServiceThunk(`/municipality-service/${serviceId}`, thunkAPI);
   }
 );
 
@@ -29,15 +40,20 @@ const municipalityServicesSlice = createSlice({
     [getMunicipalityServices.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.municipalityServices = payload;
-      console.log(payload);
     },
     [getMunicipalityServices.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.snackBarSettings = {
-        open: false,
-        type: "",
-        message: "",
-      };
+    },
+
+    [getMunicipalityService.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getMunicipalityService.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.municipalityService = payload;
+    },
+    [getMunicipalityService.rejected]: (state, { payload }) => {
+      state.isLoading = false;
     },
   },
 });

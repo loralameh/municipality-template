@@ -12,7 +12,6 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React examples
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import Navbar from "examples/Navbars";
-import Icon from "@mui/material/Icon";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 // Routes
@@ -24,20 +23,19 @@ import bgImage2 from "assets/images/shapes/waves-white.svg";
 
 //redux call
 import { useDispatch, useSelector } from "react-redux";
-import { setSnackbar } from "features/snackBar/snackBarSlice";
+import { useParams } from "react-router-dom";
+import { getMunicipalityService } from "features/municipalityService/municipalityServiceSlice";
+import { element } from "prop-types";
 
-function SingleService(props) {
+function SingleService() {
   const dispatch = useDispatch();
+  const { serviceId } = useParams();
 
-  const { user } = useSelector((store) => store.user);
-  const { snackBarSettings, isLoading } = useSelector((store) => store.contactUs);
+  const { municipalityService } = useSelector((store) => store.municipalityServices);
 
   useEffect(() => {
-    if (user) {
-      dispatch(setSnackbar(snackBarSettings));
-    }
-  }, [dispatch, snackBarSettings]);
-  console.log(props);
+    dispatch(getMunicipalityService(serviceId));
+  }, [dispatch, serviceId]);
 
   return (
     <>
@@ -70,7 +68,7 @@ function SingleService(props) {
                 },
               })}
             >
-              single service page
+              {municipalityService && municipalityService.title}
             </MKTypography>
           </Grid>
         </Container>
@@ -87,44 +85,49 @@ function SingleService(props) {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        <Container>
-          <MKBox lineHeight={1}>
-            <MKTypography display="block" variant="h4" fontWeight="bold" mb={0.5}>
-              lora
-            </MKTypography>
-            <MKTypography
-              variant="button"
-              fontWeight="regular"
-              lineHeight={1}
-              color="text"
-              sx={{ display: "flex", alignItems: "center" }}
-            >
-              <AccessTimeIcon fontSize="small" />
-              &nbsp; 3 days
-            </MKTypography>
-            <MKTypography
-              variant="button"
-              fontWeight="regular"
-              lineHeight={1}
-              color="text"
-              sx={{ display: "flex", alignItems: "center" }}
-            >
-              <AttachMoneyIcon fontSize="small" />
-              &nbsp; 25,000
-            </MKTypography>
-          </MKBox>
-          <MKTypography variant="body2" color="text" my={2}>
-            hjhjh hhjh
-          </MKTypography>
+        {municipalityService && (
+          <Container>
+            <MKBox lineHeight={1} my={1}>
+              <MKTypography display="block" variant="h4" fontWeight="bold" mb={0.5}>
+                {municipalityService.title}
+              </MKTypography>
+              <MKTypography variant="body2" color="text" my={2}>
+                {municipalityService.description}
+              </MKTypography>
+              <MKTypography
+                variant="button"
+                fontWeight="regular"
+                lineHeight={1}
+                color="text"
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <AccessTimeIcon fontSize="small" />
+                &nbsp; {municipalityService.expectedTime}
+              </MKTypography>
+              <MKTypography
+                variant="button"
+                fontWeight="regular"
+                lineHeight={1}
+                color="text"
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <AttachMoneyIcon fontSize="small" />
+                &nbsp; {municipalityService.cost}
+              </MKTypography>
+            </MKBox>
 
-          <MKTypography display="block" variant="h5" fontWeight="bold" mb={0.5}>
-            المستندات المطلوبة
-          </MKTypography>
-
-          <MKTypography variant="body2" color="text" my={2}>
-            1- تاتان
-          </MKTypography>
-        </Container>
+            <MKTypography display="block" variant="h5" fontWeight="bold" mb={0.5}>
+              المستندات المطلوبة
+            </MKTypography>
+            <MKBox ml={4}>
+              <ol>
+                {municipalityService.requiredDocs.map((element) => {
+                  return <li>element</li>;
+                })}
+              </ol>
+            </MKBox>
+          </Container>
+        )}
       </Card>
 
       <MKBox pt={6} px={1} mt={6}>
