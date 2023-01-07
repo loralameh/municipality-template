@@ -21,19 +21,23 @@ import bgImage2 from "assets/images/shapes/waves-white.svg";
 //redux calls
 import { useDispatch, useSelector } from "react-redux";
 import { getMunicipalityServices } from "features/municipalityService/municipalityServiceSlice";
+import { getServiceCategory } from "features/serviceCategory/serviceCategorySlice";
 
 import Service from "./sections/Service";
 function AllCategoryServices() {
   const dispatch = useDispatch();
 
   const { municipalityServices } = useSelector((store) => store.municipalityServices);
+  const { category } = useSelector((store) => store.serviceCategory);
   const { categoryId } = useParams();
 
   useEffect(() => {
     dispatch(getMunicipalityServices(categoryId));
+    dispatch(getServiceCategory(categoryId));
     console.log(categoryId);
   }, [dispatch, categoryId]);
 
+  console.log(municipalityServices);
   return (
     <>
       <Navbar />
@@ -65,7 +69,7 @@ function AllCategoryServices() {
                 },
               })}
             >
-              all services in this categpry
+              {category && category.name}
             </MKTypography>
           </Grid>
         </Container>

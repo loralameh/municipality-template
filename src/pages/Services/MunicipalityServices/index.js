@@ -20,13 +20,13 @@ import bgImage from "assets/images/service.jpg";
 
 //redux call
 import { useDispatch, useSelector } from "react-redux";
-import { getServiceCategory } from "features/serviceCategory/serviceCategorySlice";
+import { getAllServiceCategories } from "features/serviceCategory/serviceCategorySlice";
 
 function MunicipalityServices() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getServiceCategory("municipality"));
+    dispatch(getAllServiceCategories("municipality"));
   }, [dispatch]);
 
   const { categories } = useSelector((store) => store.serviceCategory);

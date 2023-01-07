@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getServiceCategoryThunk } from "features/serviceCategory/serviceCategoryThunk";
+import {
+  getAllServiceCategoriesThunk,
+  getServiceCategoryThunk,
+} from "features/serviceCategory/serviceCategoryThunk";
 
 const initialState = {
   isLoading: false,
@@ -9,12 +12,19 @@ const initialState = {
     message: "",
   },
   categories: [],
+  category: undefined,
 };
 
+export const getAllServiceCategories = createAsyncThunk(
+  "serviceCategory/getAllServiceCategories",
+  async (source, thunkAPI) => {
+    return getAllServiceCategoriesThunk(`/service-category?source=${source}`, thunkAPI);
+  }
+);
 export const getServiceCategory = createAsyncThunk(
   "serviceCategory/getServiceCategory",
-  async (source, thunkAPI) => {
-    return getServiceCategoryThunk(`/service-category?source=${source}`, thunkAPI);
+  async (categoryId, thunkAPI) => {
+    return getServiceCategoryThunk(`/service-category/${categoryId}`, thunkAPI);
   }
 );
 
@@ -23,25 +33,26 @@ const serviceCategorySlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [getAllServiceCategories.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getAllServiceCategories.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.categories = payload;
+    },
+    [getAllServiceCategories.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+    },
+
     [getServiceCategory.pending]: (state) => {
       state.isLoading = true;
     },
     [getServiceCategory.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.snackBarSettings = {
-        open: true,
-        type: "success",
-        message: `تم الإرسال`,
-      };
-      state.categories = payload;
+      state.category = payload;
     },
     [getServiceCategory.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      state.snackBarSettings = {
-        open: false,
-        type: "",
-        message: "",
-      };
     },
   },
 });

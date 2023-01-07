@@ -12,11 +12,7 @@ function Service({ municipalityServices }) {
 
   return (
     <>
-      <MKTypography variant="h3" mb={6}>
-        title
-      </MKTypography>
-
-      <Grid container spacing={3}>
+      <Grid container spacing={3} my={3}>
         {municipalityServices.map((element) => {
           return (
             <Grid item key={element._id} xs={12} sm={6} lg={3}>
