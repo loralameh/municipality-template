@@ -26,6 +26,7 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import SnackBar from "examples/SnackBar/SnackBar";
 import SingleService from "pages/Services/MunicipalityServices/SingleService";
+import Navbar from "examples/Navbars";
 
 // Create rtl cache
 const cacheRtl = createCache({
@@ -61,21 +62,25 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <SnackBar />
+
         <Routes>
-          {getRoutes(routes)}
-          {getRoutes(userRoutes)}
-          <Route path="/" element={<Home />} />
+          <Route element={<Navbar />}>
+            <Route path="/" element={<Home />} />
+            {getRoutes(routes)}
+            {getRoutes(userRoutes)}
+            <Route
+              path="/pages/municipality-services/:categoryId"
+              element={<AllCategoryServices />}
+            />
+            <Route
+              path="/pages/municipality-services/:categoryId/service/:serviceId"
+              element={<SingleService />}
+            />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Route>
+
           <Route path="/pages/authorization/sign-in" element={<SignIn />} />
           <Route path="/pages/authorization/register" element={<Register />} />
-          <Route
-            path="/pages/municipality-services/:categoryId"
-            element={<AllCategoryServices />}
-          />
-          <Route
-            path="/pages/municipality-services/:categoryId/service/:serviceId"
-            element={<SingleService />}
-          />
-          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </ThemeProvider>
     </CacheProvider>

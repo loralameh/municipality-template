@@ -11,7 +11,6 @@ import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
 import DefaultFooter from "examples/Footers/DefaultFooter";
-import Navbar from "examples/Navbars";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 // Routes
@@ -39,8 +38,6 @@ function SingleService() {
 
   return (
     <>
-      <Navbar />
-
       <MKBox
         minHeight="50vh"
         width="100%"

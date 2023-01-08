@@ -11,7 +11,6 @@ import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
 import DefaultFooter from "examples/Footers/DefaultFooter";
-import Navbar from "examples/Navbars";
 
 // Routes
 import footerRoutes from "footer.routes";
@@ -39,8 +38,6 @@ function Profile() {
 
   return (
     <>
-      <Navbar />
-
       <MKBox
         minHeight="50vh"
         width="100%"

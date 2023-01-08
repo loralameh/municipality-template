@@ -8,7 +8,6 @@ import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
-import Navbar from "examples/Navbars";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // About Us page sections
@@ -25,7 +24,6 @@ import bgImage from "assets/images/bg-about-us.jpg";
 function AboutUs() {
   return (
     <>
-      <Navbar />
       <MKBox
         minHeight="75vh"
         width="100%"

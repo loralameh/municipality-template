@@ -9,7 +9,6 @@ import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
-import Navbar from "examples/Navbars";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import { TextField, Container, Card } from "@mui/material";
 
@@ -60,8 +59,6 @@ function ContactUs() {
   });
   return (
     <>
-      <Navbar />
-
       <MKBox
         minHeight="50vh"
         width="100%"

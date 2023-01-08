@@ -9,7 +9,6 @@ import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
-import Navbar from "examples/Navbars";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Routes
@@ -30,8 +29,6 @@ function CitizenService() {
 
   return (
     <>
-      <Navbar />
-
       <MKBox
         minHeight="50vh"
         width="100%"

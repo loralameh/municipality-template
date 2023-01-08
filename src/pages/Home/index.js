@@ -10,7 +10,6 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React examples
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
-import Navbar from "examples/Navbars";
 
 // Home page sections
 import Counters from "pages/Home/sections/Counters";
@@ -42,8 +41,6 @@ function Home() {
   return (
     <>
       {isLoading && <Loader />}
-
-      <Navbar />
       <MKBox
         minHeight="75vh"
         width="100%"

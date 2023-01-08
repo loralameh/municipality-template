@@ -12,7 +12,6 @@ import MKTypography from "components/MKTypography";
 
 // Navigation
 import DefaultFooter from "examples/Footers/DefaultFooter";
-import Navbar from "examples/Navbars";
 import footerRoutes from "footer.routes";
 
 // Image & icons
@@ -40,8 +39,6 @@ function AllCategoryServices() {
   console.log(municipalityServices);
   return (
     <>
-      <Navbar />
-
       <MKBox
         minHeight="50vh"
         width="100%"

@@ -11,7 +11,6 @@ import MKTypography from "components/MKTypography";
 import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 
 // navigation
-import Navbar from "examples/Navbars";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import footerRoutes from "footer.routes";
 
@@ -33,8 +32,6 @@ function MunicipalityServices() {
 
   return (
     <>
-      <Navbar />
-
       <MKBox bgColor="white">
         <MKBox
           minHeight="25rem"

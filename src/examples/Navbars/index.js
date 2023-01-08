@@ -6,6 +6,7 @@ import routes from "routes";
 import { userRoutes } from "routes";
 //redux call
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router";
 
 const Navbar = () => {
   const { user } = useSelector((store) => store.user);
@@ -36,6 +37,7 @@ const Navbar = () => {
           light
         />
       )}
+      <Outlet />
     </>
   );
 };
