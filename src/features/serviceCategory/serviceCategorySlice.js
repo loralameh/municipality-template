@@ -6,11 +6,6 @@ import {
 
 const initialState = {
   isLoading: false,
-  snackBarSettings: {
-    open: false,
-    type: "",
-    message: "",
-  },
   categories: [],
   category: undefined,
 };

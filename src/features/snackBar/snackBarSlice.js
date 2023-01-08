@@ -5,7 +5,7 @@ const initialState = {
   type: "success",
   message: "",
 };
-const userSlice = createSlice({
+const snackBarSlice = createSlice({
   name: "snackBar",
   initialState,
   reducers: {
@@ -17,5 +17,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setSnackbar } = userSlice.actions;
-export default userSlice.reducer;
+export const { setSnackbar } = snackBarSlice.actions;
+export default snackBarSlice.reducer;

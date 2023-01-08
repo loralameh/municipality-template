@@ -26,18 +26,23 @@ import Counters from "pages/Home/sections/Counters";
 import footerRoutes from "footer.routes";
 
 //redux call
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
+import Loader from "examples/Loader";
 
 function Home() {
   // const dispatch = useDispatch();
   // const navigate = useNavigate();
 
   // const { user } = useSelector((store) => store.user);
+  const { categories, isLoading } = useSelector((store) => store.serviceCategory);
+
   return (
     <>
+      {isLoading && <Loader />}
+
       <Navbar />
       <MKBox
         minHeight="75vh"
