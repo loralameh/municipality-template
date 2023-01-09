@@ -45,13 +45,13 @@ const Navbar = () => {
     let citizenCollapse = [];
     for (const c of categories) {
       console.log(c);
-      if (serviceSource == "municipality") {
+      if (c.serviceSource == "municipality") {
         municipalityCollapse.push({
           name: c.name,
           route: `/pages/municipality-services/${c._id}`,
           component: <MunicipalityServices />,
         });
-      } else if (serviceSource == "citizen") {
+      } else if (c.serviceSource == "citizen") {
         //fix route when we add the citizen routes
         citizenCollapse.push({
           name: c.name,
