@@ -7,13 +7,13 @@ import Icon from "@mui/material/Icon";
 // Material Kit 2 React components
 import MKTypography from "components/MKTypography";
 
-function Service({ municipalityServices }) {
+function Service({ services }) {
   const { categoryId } = useParams();
 
   return (
     <>
       <Grid container spacing={3} my={3}>
-        {municipalityServices.map((element) => {
+        {services.map((element) => {
           return (
             <Grid item key={element._id} xs={12} sm={6} lg={3}>
               <Card sx={cardStyle}>
