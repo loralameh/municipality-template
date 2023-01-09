@@ -18,7 +18,7 @@ const initialState = {
 export const getCitizenServices = createAsyncThunk(
   "CitizenServices/getAllCitizenServices",
   async (categoryId, thunkAPI) => {
-    return getCitizenServicesThunk(`/citizen-service?category=${categoryId}`, thunkAPI);
+    return getCitizenServicesThunk(`/citizen-service/all?category=${categoryId}`, thunkAPI);
   }
 );
 

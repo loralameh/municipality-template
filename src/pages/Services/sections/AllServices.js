@@ -80,7 +80,7 @@ function AllServices(props) {
 
 export default AllServices;
 AllServices.propTypes = {
-  data: PropTypes.object.isRequired,
-  category: PropTypes.object.isRequired,
+  data: PropTypes.array,
+  category: PropTypes.object,
   baseRoute: PropTypes.string.isRequired,
 };

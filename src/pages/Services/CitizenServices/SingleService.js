@@ -21,12 +21,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getMunicipalityService } from "features/municipalityService/municipalityServiceSlice";
 import { element } from "prop-types";
+import Loader from "examples/Loader";
 
 function SingleService() {
   const dispatch = useDispatch();
   const { serviceId } = useParams();
 
-  const { municipalityService } = useSelector((store) => store.municipalityServices);
+  const { municipalityService, isLoading } = useSelector((store) => store.municipalityServices);
 
   useEffect(() => {
     dispatch(getMunicipalityService(serviceId));
@@ -34,6 +35,8 @@ function SingleService() {
 
   return (
     <>
+      {isLoading && <Loader />}
+
       <MKBox
         minHeight="50vh"
         width="100%"

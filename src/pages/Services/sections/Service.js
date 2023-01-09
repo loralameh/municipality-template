@@ -6,6 +6,7 @@ import Icon from "@mui/material/Icon";
 
 // Material Kit 2 React components
 import MKTypography from "components/MKTypography";
+import PropTypes from "prop-types";
 
 function Service({ services, baseRoute }) {
   const { categoryId } = useParams();
@@ -69,3 +70,7 @@ const cardStyle = {
   },
 };
 export default Service;
+Service.propTypes = {
+  services: PropTypes.array.isRequired,
+  baseRoute: PropTypes.string.isRequired,
+};
