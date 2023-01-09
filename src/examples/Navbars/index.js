@@ -10,6 +10,9 @@ import { getAllServiceCategories } from "features/serviceCategory/serviceCategor
 import { Outlet } from "react-router";
 import Loader from "examples/Loader";
 import MunicipalityServices from "pages/Services/MunicipalityServices";
+import DefaultFooter from "examples/Footers/DefaultFooter";
+import MKBox from "components/MKBox";
+import footerRoutes from "footer.routes";
 
 const Navbar = () => {
   const [allRoutes, setAllRoutes] = useState([]);
@@ -109,6 +112,10 @@ const Navbar = () => {
         </>
       )}
       <Outlet />
+
+      <MKBox pt={6} px={1} mt={6}>
+        <DefaultFooter content={footerRoutes} />
+      </MKBox>
     </>
   );
 };
