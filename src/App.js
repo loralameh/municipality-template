@@ -36,8 +36,6 @@ const cacheRtl = createCache({
 
 export default function App() {
   const { pathname } = useLocation();
-  console.log(pathname);
-
   // Setting page scroll to 0 when changing the route
   useEffect(() => {
     document.documentElement.scrollTop = 0;

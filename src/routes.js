@@ -73,21 +73,21 @@ const routes = [
         route: "/pages/municipality-services",
         dropdown: true,
         collapse: [
-          {
-            name: "الخدمات الاعمارية",
-            route: "/pages/municipality-services",
-            component: <MunicipalityServices />,
-          },
-          {
-            name: "المسقفات",
-            route: "/sections/page-sections/features",
-            component: <Features />,
-          },
-          {
-            name: "الكهرباء",
-            route: "/sections/page-sections/features",
-            component: <Features />,
-          },
+          // {
+          //   name: "الخدمات الاعمارية",
+          //   route: "/pages/municipality-services/:id",
+          //   component: <MunicipalityServices />,
+          // },
+          // {
+          //   name: "المسقفات",
+          //   route: "/sections/page-sections/features",
+          //   component: <Features />,
+          // },
+          // {
+          //   name: "الكهرباء",
+          //   route: "/sections/page-sections/features",
+          //   component: <Features />,
+          // },
         ],
       },
       {
@@ -95,21 +95,21 @@ const routes = [
         description: " (صحة, ترفيه, صيانة, مطاعم...)",
         dropdown: true,
         collapse: [
-          {
-            name: "الخدمات الاعمارية",
-            route: "/sections/page-sections/page-headers",
-            component: <PageHeaders />,
-          },
-          {
-            name: "المسقفات",
-            route: "/sections/page-sections/features",
-            component: <Features />,
-          },
-          {
-            name: "الكهرباء",
-            route: "/sections/page-sections/features",
-            component: <Features />,
-          },
+          // {
+          //   name: "الخدمات الاعمارية",
+          //   route: "/sections/page-sections/page-headers",
+          //   component: <PageHeaders />,
+          // },
+          // {
+          //   name: "المسقفات",
+          //   route: "/sections/page-sections/features",
+          //   component: <Features />,
+          // },
+          // {
+          //   name: "الكهرباء",
+          //   route: "/sections/page-sections/features",
+          //   component: <Features />,
+          // },
         ],
       },
     ],
