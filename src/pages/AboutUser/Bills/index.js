@@ -8,12 +8,6 @@ import { Card } from "@mui/material";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
-// Material Kit 2 React examples
-import DefaultFooter from "examples/Footers/DefaultFooter";
-
-// Routes
-import footerRoutes from "footer.routes";
-
 // Image & icons
 import bgImage2 from "assets/images/shapes/waves-white.svg";
 
@@ -84,9 +78,6 @@ function Bills() {
           </Grid>
         </Container>
       </Card>
-      <MKBox pt={6} px={1} mt={6}>
-        <DefaultFooter content={footerRoutes} />
-      </MKBox>
     </>
   );
 }

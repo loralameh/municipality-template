@@ -8,7 +8,6 @@ import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
-import DefaultFooter from "examples/Footers/DefaultFooter";
 import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
 
 // Home page sections
@@ -21,8 +20,6 @@ import Counters from "pages/Home/sections/Counters";
 
 // Home page components
 // import BuiltByDevelopers from "pages/Home/components/BuiltByDevelopers";
-
-import footerRoutes from "footer.routes";
 
 //redux call
 import { useDispatch, useSelector } from "react-redux";
@@ -195,9 +192,6 @@ function Home() {
           </Container>
         </MKBox> */}
       </Card>
-      <MKBox pt={6} px={1} mt={6}>
-        <DefaultFooter content={footerRoutes} />
-      </MKBox>
     </>
   );
 }

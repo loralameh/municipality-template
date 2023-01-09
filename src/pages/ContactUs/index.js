@@ -9,10 +9,7 @@ import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
-import DefaultFooter from "examples/Footers/DefaultFooter";
 import { TextField, Container, Card } from "@mui/material";
-
-import footerRoutes from "footer.routes";
 
 // Image & icons
 import bgImage from "assets/images/shapes/waves-white.svg";
@@ -303,10 +300,6 @@ function ContactUs() {
           </Grid>
         </Container>
       </Card>
-
-      <MKBox pt={6} px={1} mt={6}>
-        <DefaultFooter content={footerRoutes} />
-      </MKBox>
     </>
   );
 }

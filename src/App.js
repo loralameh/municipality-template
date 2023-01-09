@@ -13,7 +13,7 @@ import Home from "pages/Home";
 import SignIn from "pages/Authorization/SignIn";
 import Register from "pages/Authorization/Register";
 import Profile from "pages/AboutUser/Profile";
-import AllCategoryServices from "pages/Services/MunicipalityServices/AllCategoryServices";
+import AllMunicipalityCategoryServices from "pages/Services/MunicipalityServices/AllCategoryServices";
 
 // Material Kit 2 React routes
 import routes from "routes";
@@ -25,10 +25,11 @@ import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import SnackBar from "examples/SnackBar/SnackBar";
-import SingleService from "pages/Services/MunicipalityServices/SingleService";
+import SingleMunicipalityService from "pages/Services/MunicipalityServices/SingleService";
 import Navbar from "examples/Navbars";
 import MunicipalityServices from "pages/Services/MunicipalityServices";
 import CitizenService from "pages/Services/CitizenServices";
+import AllCitizenCategoryServices from "pages/Services/CitizenServices/AllCategoryServices";
 
 // Create rtl cache
 const cacheRtl = createCache({
@@ -72,19 +73,22 @@ export default function App() {
             <Route path="/pages/municipality-services/" element={<MunicipalityServices />} />
             <Route
               path="/pages/municipality-services/:categoryId"
-              element={<AllCategoryServices />}
+              element={<AllMunicipalityCategoryServices />}
             />
             <Route
               path="/pages/municipality-services/:categoryId/service/:serviceId"
-              element={<SingleService />}
+              element={<SingleMunicipalityService />}
             />
 
             <Route path="/pages/citizen-services/" element={<CitizenService />} />
-            <Route path="/pages/citizen-services/:categoryId" element={<AllCategoryServices />} />
             <Route
+              path="/pages/citizen-services/:categoryId"
+              element={<AllCitizenCategoryServices />}
+            />
+            {/* <Route
               path="/pages/citizen-services/:categoryId/service/:serviceId"
               element={<SingleService />}
-            />
+            /> */}
             <Route path="*" element={<Navigate to="/" />} />
           </Route>
 

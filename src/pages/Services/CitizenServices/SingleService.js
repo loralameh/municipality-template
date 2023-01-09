@@ -12,7 +12,6 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React examples
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-// Routes
 
 // Image & icons
 import bgImage2 from "assets/images/shapes/waves-white.svg";
