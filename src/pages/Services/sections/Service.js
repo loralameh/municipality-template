@@ -7,7 +7,7 @@ import Icon from "@mui/material/Icon";
 // Material Kit 2 React components
 import MKTypography from "components/MKTypography";
 
-function Service({ services }) {
+function Service({ services, baseRoute }) {
   const { categoryId } = useParams();
 
   return (
@@ -25,7 +25,7 @@ function Service({ services }) {
 
                   <MKTypography
                     component={Link}
-                    to={`/pages/municipality-services/${categoryId}/service/${element._id}`}
+                    to={`${baseRoute}/${categoryId}/service/${element._id}`}
                     variant="body2"
                     fontWeight="regular"
                     color="dark"

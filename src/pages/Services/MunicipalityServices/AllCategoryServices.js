@@ -24,7 +24,11 @@ function AllCategoryServices() {
   return (
     <>
       {isLoading && <Loader />}
-      <AllServices data={municipalityServices} category={category} />
+      <AllServices
+        data={municipalityServices}
+        category={category}
+        baseRoute="/pages/municipality-services"
+      />
     </>
   );
 }

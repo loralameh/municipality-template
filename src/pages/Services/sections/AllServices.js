@@ -64,7 +64,7 @@ function AllServices(props) {
       >
         {props.data.length > 0 && (
           <Container>
-            <Service services={props.data} />
+            <Service services={props.data} baseRoute={props.baseRoute} />
           </Container>
         )}
 
@@ -82,4 +82,5 @@ export default AllServices;
 AllServices.propTypes = {
   data: PropTypes.object.isRequired,
   category: PropTypes.object.isRequired,
+  baseRoute: PropTypes.string.isRequired,
 };
