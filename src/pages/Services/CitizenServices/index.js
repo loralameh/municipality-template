@@ -9,7 +9,7 @@ function MunicipalityServices() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllServiceCategories("municipality"));
+    dispatch(getAllServiceCategories("citizen"));
   }, [dispatch]);
 
   const { categories } = useSelector((store) => store.serviceCategory);
@@ -17,10 +17,10 @@ function MunicipalityServices() {
   return (
     <>
       <MainPage
-        getData={() => getAllServiceCategories("municipality")}
+        getData={() => getAllServiceCategories("citizen")}
         data={categories}
-        pageName="خدمات البلدية"
-        baseRoute="/pages/municipality-services"
+        pageName="خدمات للأهالي"
+        baseRoute="/pages/citizen-services"
       />
     </>
   );

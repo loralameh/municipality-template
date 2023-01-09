@@ -42,8 +42,6 @@ const routes = [
   {
     name: " عن بلدية حاصبيا",
     icon: <Icon>dashboard</Icon>,
-    // columns: 1,
-    // rowsPerColumn: 2,
     collapse: [
       {
         name: "   تعرف على المجلس البلدي الحالي   ",
@@ -72,45 +70,14 @@ const routes = [
         description: "الخدمات و المعاملات الرسمية",
         route: "/pages/municipality-services",
         dropdown: true,
-        collapse: [
-          // {
-          //   name: "الخدمات الاعمارية",
-          //   route: "/pages/municipality-services/:id",
-          //   component: <MunicipalityServices />,
-          // },
-          // {
-          //   name: "المسقفات",
-          //   route: "/sections/page-sections/features",
-          //   component: <Features />,
-          // },
-          // {
-          //   name: "الكهرباء",
-          //   route: "/sections/page-sections/features",
-          //   component: <Features />,
-          // },
-        ],
+        collapse: [],
       },
       {
         name: "خدمات للأهالي",
+        route: "/pages/citizen-services",
         description: " (صحة, ترفيه, صيانة, مطاعم...)",
         dropdown: true,
-        collapse: [
-          // {
-          //   name: "الخدمات الاعمارية",
-          //   route: "/sections/page-sections/page-headers",
-          //   component: <PageHeaders />,
-          // },
-          // {
-          //   name: "المسقفات",
-          //   route: "/sections/page-sections/features",
-          //   component: <Features />,
-          // },
-          // {
-          //   name: "الكهرباء",
-          //   route: "/sections/page-sections/features",
-          //   component: <Features />,
-          // },
-        ],
+        collapse: [],
       },
     ],
   },
