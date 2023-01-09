@@ -13,6 +13,7 @@ import MunicipalityServices from "pages/Services/MunicipalityServices";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import MKBox from "components/MKBox";
 import footerRoutes from "footer.routes";
+import CitizenServices from "pages/Services/CitizenServices";
 
 const Navbar = () => {
   const [allRoutes, setAllRoutes] = useState([]);
@@ -22,9 +23,7 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    //fix getAllServiceCategories func to get all sevices combined if no props was added to it
-
-    dispatch(getAllServiceCategories("municipality"));
+    dispatch(getAllServiceCategories());
   }, []);
 
   useEffect(() => {
@@ -55,11 +54,10 @@ const Navbar = () => {
           component: <MunicipalityServices />,
         });
       } else if (c.serviceSource == "citizen") {
-        //fix route when we add the citizen routes
         citizenCollapse.push({
           name: c.name,
-          route: `/pages/municipality-services/${c._id}`,
-          component: <MunicipalityServices />,
+          route: `/pages/citizen-services/${c._id}`,
+          component: <CitizenServices />,
         });
       }
     }
@@ -72,10 +70,9 @@ const Navbar = () => {
         collapse: municipalityCollapse,
       },
       {
-        //fix route when we add the citizen routes
         name: "خدمات للأهالي",
         description: " (صحة, ترفيه, صيانة, مطاعم...)",
-        route: "/pages/municipality-services",
+        route: "/pages/citizen-services",
         dropdown: true,
         collapse: citizenCollapse,
       },

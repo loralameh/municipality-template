@@ -13,7 +13,8 @@ const initialState = {
 export const getAllServiceCategories = createAsyncThunk(
   "serviceCategory/getAllServiceCategories",
   async (source, thunkAPI) => {
-    return getAllServiceCategoriesThunk(`/service-category?source=${source}`, thunkAPI);
+    if (source) return getAllServiceCategoriesThunk(`/service-category?source=${source}`, thunkAPI);
+    return getAllServiceCategoriesThunk(`/service-category`, thunkAPI);
   }
 );
 export const getServiceCategory = createAsyncThunk(
