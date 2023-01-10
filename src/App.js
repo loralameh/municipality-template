@@ -26,6 +26,7 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import SnackBar from "examples/SnackBar/SnackBar";
 import SingleMunicipalityService from "pages/Services/MunicipalityServices/SingleService";
+import SingleCitizenService from "pages/Services/CitizenServices/SingleService";
 import Navbar from "examples/Navbars";
 import MunicipalityServices from "pages/Services/MunicipalityServices";
 import CitizenService from "pages/Services/CitizenServices";
@@ -85,10 +86,10 @@ export default function App() {
               path="/pages/citizen-services/:categoryId"
               element={<AllCitizenCategoryServices />}
             />
-            {/* <Route
+            <Route
               path="/pages/citizen-services/:categoryId/service/:serviceId"
-              element={<SingleService />}
-            /> */}
+              element={<SingleCitizenService />}
+            />
             <Route path="*" element={<Navigate to="/" />} />
           </Route>
 

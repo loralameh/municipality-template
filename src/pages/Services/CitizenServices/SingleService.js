@@ -15,22 +15,24 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 // Image & icons
 import bgImage2 from "assets/images/shapes/waves-white.svg";
-
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 //redux call
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getMunicipalityService } from "features/municipalityService/municipalityServiceSlice";
-import { element } from "prop-types";
+import { getCitizenService } from "features/citizenService/citizenServiceSlice";
 import Loader from "examples/Loader";
+import Slideshow from "examples/Slideshow";
+import SocialButtons from "examples/SocialButtons";
 
 function SingleService() {
   const dispatch = useDispatch();
   const { serviceId } = useParams();
+  const { citizenService, isLoading } = useSelector((store) => store.citizenServices);
 
-  const { municipalityService, isLoading } = useSelector((store) => store.municipalityServices);
-
+  console.log(citizenService);
   useEffect(() => {
-    dispatch(getMunicipalityService(serviceId));
+    dispatch(getCitizenService(serviceId));
   }, [dispatch, serviceId]);
 
   return (
@@ -64,7 +66,7 @@ function SingleService() {
                 },
               })}
             >
-              {municipalityService && municipalityService.title}
+              {citizenService && citizenService.title}
             </MKTypography>
           </Grid>
         </Container>
@@ -81,46 +83,47 @@ function SingleService() {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        {municipalityService && (
+        {citizenService && (
           <Container>
+            <Slideshow images={citizenService.pictureGallery} />
             <MKBox lineHeight={1} my={1}>
               <MKTypography display="block" variant="h4" fontWeight="bold" mb={0.5}>
-                {municipalityService.title}
+                {citizenService.title}
               </MKTypography>
-              <MKTypography variant="body2" color="text" my={2}>
-                {municipalityService.description}
-              </MKTypography>
-              <MKTypography
-                variant="button"
-                fontWeight="regular"
-                lineHeight={1}
-                color="text"
-                sx={{ display: "flex", alignItems: "center" }}
-              >
-                <AccessTimeIcon fontSize="small" />
-                &nbsp; {municipalityService.expectedTime}
-              </MKTypography>
-              <MKTypography
-                variant="button"
-                fontWeight="regular"
-                lineHeight={1}
-                color="text"
-                sx={{ display: "flex", alignItems: "center" }}
-              >
-                <AttachMoneyIcon fontSize="small" />
-                &nbsp; {municipalityService.cost}
-              </MKTypography>
-            </MKBox>
+              <SocialButtons
+                githubLink={citizenService.githubLink}
+                fbLink={citizenService.fbLink}
+                instaLink={citizenService.instaLink}
+                twitterLink={citizenService.twitterLink}
+                linkedinLink={citizenService.linkedinLink}
+                website={citizenService.website}
+                whatsAppLink={citizenService.whatsAppLink}
+              />
 
-            <MKTypography display="block" variant="h5" fontWeight="bold" mb={0.5}>
-              المستندات المطلوبة
-            </MKTypography>
-            <MKBox ml={4}>
-              <ol>
-                {municipalityService.requiredDocs.map((element) => {
-                  return <li>element</li>;
-                })}
-              </ol>
+              <MKTypography
+                variant="button"
+                fontWeight="regular"
+                lineHeight={1}
+                color="text"
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <LocalPhoneIcon fontSize="small" />
+                &nbsp; {citizenService.servicePhoneNumber}
+              </MKTypography>
+              <MKTypography
+                variant="button"
+                fontWeight="regular"
+                lineHeight={1}
+                color="text"
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <LocationOnIcon fontSize="small" />
+                &nbsp; {citizenService.location}
+              </MKTypography>
+
+              <MKTypography variant="body2" color="text" my={2}>
+                {citizenService.description}
+              </MKTypography>
             </MKBox>
           </Container>
         )}

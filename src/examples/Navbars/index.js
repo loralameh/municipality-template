@@ -46,7 +46,6 @@ const Navbar = () => {
     let municipalityCollapse = [];
     let citizenCollapse = [];
     for (const c of categories) {
-      console.log(c);
       if (c.serviceSource == "municipality") {
         municipalityCollapse.push({
           name: c.name,
