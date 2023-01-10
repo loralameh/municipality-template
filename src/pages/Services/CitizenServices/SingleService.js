@@ -85,7 +85,7 @@ function SingleService() {
       >
         {citizenService && (
           <Container>
-            <Slideshow images={citizenService.pictureGallery} />
+            {citizenService.pictureGallery && <Slideshow images={citizenService.pictureGallery} />}
             <MKBox lineHeight={1} my={1}>
               <MKTypography display="block" variant="h4" fontWeight="bold" mb={0.5}>
                 {citizenService.title}

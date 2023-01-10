@@ -23,7 +23,10 @@ const Slideshow = (props) => {
       <Fade>
         {props.images.map((image, index) => (
           <div className="each-fade" key={index}>
-            <div className="image-container">
+            <div
+              className="image-container"
+              style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+            >
               <img src={image} />
             </div>
           </div>
