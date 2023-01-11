@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -13,25 +13,32 @@ import MKTypography from "components/MKTypography";
 import bgImage2 from "assets/images/shapes/waves-white.svg";
 import bgImage from "assets/images/illustrations/illustration-reset.jpg";
 import EditIcon from "@mui/icons-material/Edit";
-
+import SchoolIcon from "@mui/icons-material/School";
+import WorkIcon from "@mui/icons-material/Work";
 //redux call
 import { useDispatch, useSelector } from "react-redux";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
-
+import { getUser, updateUser } from "features/user/userSlice";
+import Loader from "examples/Loader";
+import MKButton from "components/MKButton";
+import EditProfileModal from "./EditProfileModal";
 function Profile() {
   const dispatch = useDispatch();
-
-  const { user } = useSelector((store) => store.user);
-  const { snackBarSettings } = useSelector((store) => store.contactUs);
+  const [openModal, setOpenModal] = useState(false);
+  const { user, isLoading, snackBarSettings } = useSelector((store) => store.user);
 
   useEffect(() => {
-    if (user) {
-      dispatch(setSnackbar(snackBarSettings));
-    }
-  }, [dispatch, snackBarSettings, user]);
+    dispatch(getUser());
+  }, []);
 
+  useEffect(() => {
+    dispatch(setSnackbar(snackBarSettings));
+  }, [snackBarSettings]);
+
+  console.log(user);
   return (
     <>
+      {isLoading && <Loader />}
       <MKBox
         minHeight="50vh"
         width="100%"
@@ -88,7 +95,7 @@ function Profile() {
                 flexDirection="column"
               >
                 <MKBox display="flex" justifyContent="center" alignItems="center">
-                  <img style={{ width: "10rem" }} src={bgImage} alt="profile" />
+                  <img style={{ width: "10rem" }} src={user.image} alt="profile" />
                   <IconButton
                     sx={{
                       "&:hover": {
@@ -117,25 +124,29 @@ function Profile() {
               >
                 <MKBox py={{ xs: 3, md: 0 }}>
                   <MKTypography variant="h3" mb={1}>
-                    لورا لمع
+                    {user.name}
                     <IconButton color="primary" aria-label="edit profile" component="label">
                       <EditIcon style={{ fill: "#fff" }} />
                     </IconButton>
                   </MKTypography>
-                  <MKBox display="flex" p={1}>
-                    <MKTypography variant="button">
-                      <i className="fas fa-phone" />
-                    </MKTypography>
-                    <MKTypography
-                      component="span"
-                      variant="button"
-                      opacity={0.8}
-                      ml={2}
-                      fontWeight="regular"
-                    >
-                      71441965
-                    </MKTypography>
-                  </MKBox>
+
+                  {user.phoneNumber && (
+                    <MKBox display="flex" p={1}>
+                      <MKTypography variant="button">
+                        <i className="fas fa-phone" />
+                      </MKTypography>
+                      <MKTypography
+                        component="span"
+                        variant="button"
+                        opacity={0.8}
+                        ml={2}
+                        fontWeight="regular"
+                      >
+                        {user.phoneNumber}
+                      </MKTypography>
+                    </MKBox>
+                  )}
+
                   <MKBox display="flex" p={1}>
                     <MKTypography variant="button">
                       <i className="fas fa-envelope" />
@@ -147,29 +158,80 @@ function Profile() {
                       ml={2}
                       fontWeight="regular"
                     >
-                      hello@creative-tim.com
+                      {user.email}
                     </MKTypography>
                   </MKBox>
-                  <MKBox display="flex" p={1}>
-                    <MKTypography variant="button">
-                      <i className="fas fa-map-marker-alt" />
-                    </MKTypography>
-                    <MKTypography
-                      component="span"
-                      variant="button"
-                      opacity={0.8}
-                      ml={2}
-                      fontWeight="regular"
-                    >
-                      حي صفيفا
-                    </MKTypography>
-                  </MKBox>
+
+                  {user.address && (
+                    <MKBox display="flex" p={1}>
+                      <MKTypography variant="button">
+                        <i className="fas fa-map-marker-alt" />
+                      </MKTypography>
+                      <MKTypography
+                        component="span"
+                        variant="button"
+                        opacity={0.8}
+                        ml={2}
+                        fontWeight="regular"
+                      >
+                        {user.address}
+                      </MKTypography>
+                    </MKBox>
+                  )}
+
+                  {user.education && (
+                    <MKBox display="flex" p={1}>
+                      <MKTypography variant="button">
+                        <SchoolIcon />
+                      </MKTypography>
+                      <MKTypography
+                        component="span"
+                        variant="button"
+                        opacity={0.8}
+                        ml={2}
+                        fontWeight="regular"
+                      >
+                        {user.education}
+                      </MKTypography>
+                    </MKBox>
+                  )}
+
+                  {user.career && (
+                    <MKBox display="flex" p={1}>
+                      <MKTypography variant="button">
+                        <WorkIcon />
+                      </MKTypography>
+                      <MKTypography
+                        component="span"
+                        variant="button"
+                        opacity={0.8}
+                        ml={2}
+                        fontWeight="regular"
+                      >
+                        {user.career}
+                      </MKTypography>
+                    </MKBox>
+                  )}
+
+                  <MKButton color="info" onClick={() => setOpenModal(true)}>
+                    تعديل
+                  </MKButton>
                 </MKBox>
               </MKBox>
             </Grid>
           </Grid>
         </Container>
       </Card>
+
+      <EditProfileModal
+        isOpen={openModal}
+        closeModal={() => setOpenModal(false)}
+        data={user}
+        onSubmit={(newData) => {
+          dispatch(updateUser(newData));
+          setOpenModal(false);
+        }}
+      />
     </>
   );
 }

@@ -19,7 +19,6 @@ const Navbar = () => {
   const [allRoutes, setAllRoutes] = useState([]);
   const { user } = useSelector((store) => store.user);
   const { isLoading, categories } = useSelector((store) => store.serviceCategory);
-  const name = user ? user.name : "";
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,7 +33,7 @@ const Navbar = () => {
 
   const getRoutes = () => {
     const _routes = routes.map((route) => {
-      if (route.name == "الخدمات") {
+      if (route.name === "الخدمات") {
         return { ...route, collapse: getSubRoutes() };
       }
       return route;
@@ -46,13 +45,13 @@ const Navbar = () => {
     let municipalityCollapse = [];
     let citizenCollapse = [];
     for (const c of categories) {
-      if (c.serviceSource == "municipality") {
+      if (c.serviceSource === "municipality") {
         municipalityCollapse.push({
           name: c.name,
           route: `/pages/municipality-services/${c._id}`,
           component: <MunicipalityServices />,
         });
-      } else if (c.serviceSource == "citizen") {
+      } else if (c.serviceSource === "citizen") {
         citizenCollapse.push({
           name: c.name,
           route: `/pages/citizen-services/${c._id}`,
@@ -99,7 +98,7 @@ const Navbar = () => {
             <DefaultNavbar
               routes={[...allRoutes, ...userRoutes]}
               avatar={{
-                name: name,
+                name: `${user.name}`,
               }}
               transparent
               light

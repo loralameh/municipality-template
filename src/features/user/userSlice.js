@@ -7,7 +7,7 @@ import {
   getUserFromLocalStorage,
   removeUserFromLocalStorage,
 } from "utils/localStorage";
-import { loginUserThunk, registerUserThunk } from "./userThunk";
+import { loginUserThunk, registerUserThunk, getUserThunk, updateUserThunk } from "./userThunk";
 
 const initialState = {
   isLoading: false,
@@ -26,12 +26,10 @@ const initialState = {
 //     return getUsersThunk(`/api/factories/${factory_id}/users`, thunkAPI);
 //   }
 // );
-// export const getUser = createAsyncThunk(
-//   "user/getUser",
-//   async (user, thunkAPI) => {
-//     return getUsersThunk("/api/users/" + user.id, thunkAPI);
-//   }
-// );
+
+export const getUser = createAsyncThunk("user/getUser", async (user, thunkAPI) => {
+  return getUserThunk("/profile", thunkAPI);
+});
 
 export const registerUser = createAsyncThunk("user/registerUser", async (user, thunkAPI) => {
   return registerUserThunk("/auth/register", user, thunkAPI);
@@ -41,11 +39,11 @@ export const loginUser = createAsyncThunk("user/loginUser", async (user, thunkAP
   return loginUserThunk("/auth/login", user, thunkAPI);
 });
 
-// export const updateUser = createAsyncThunk("user/updateUser", updateUserThunk);
+export const updateUser = createAsyncThunk("user/updateUser", async (user, thunkAPI) => {
+  return updateUserThunk("/profile", user, thunkAPI);
+});
 
 // export const removeUser = createAsyncThunk("user/removeUser", removeUserThunk);
-
-// export const clearStore = createAsyncThunk("user/clearStore", clearStoreThunk);
 
 const userSlice = createSlice({
   name: "user",
@@ -59,17 +57,16 @@ const userSlice = createSlice({
     },
   },
   extraReducers: {
-    // [getUser.pending]: (state) => {
-    //   // state.isLoading = true;
-    // },
-    // [getUser.fulfilled]: (state, { payload }) => {
-    //   state.registered_user = payload;
-    //   state.isLoading = false;
-    // },
-    // [getUser.rejected]: (state, { payload }) => {
-    //   console.log(payload);
-    //   state.isLoading = false;
-    // },
+    [getUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getUser.fulfilled]: (state, { payload }) => {
+      state.user = payload;
+      state.isLoading = false;
+    },
+    [getUser.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+    },
     // [getUsers.pending]: (state) => {
     //   state.isLoading = true;
     // },
@@ -130,16 +127,27 @@ const userSlice = createSlice({
         message: "",
       };
     },
-    // [updateUser.pending]: (state) => {
-    //   state.isLoading = true;
-    // },
-    // [updateUser.fulfilled]: (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.showAll = !state.showAll;
-    // },
-    // [updateUser.rejected]: (state, { payload }) => {
-    //   state.isLoading = false;
-    // },
+    [updateUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [updateUser.fulfilled]: (state, { payload }) => {
+      state.user = payload;
+      addUserToLocalStorage(payload);
+      state.isLoading = false;
+      state.snackBarSettings = {
+        open: true,
+        type: "success",
+        message: `تم التعديل`,
+      };
+    },
+    [updateUser.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.snackBarSettings = {
+        open: true,
+        type: "error",
+        message: `${payload} `,
+      };
+    },
     // [removeUser.pending]: (state) => {
     //   state.isLoading = true;
     // },
@@ -150,9 +158,6 @@ const userSlice = createSlice({
     // [removeUser.rejected]: (state, { payload }) => {
     //   state.isLoading = false;
     //   state.endsession = true;
-    // },
-    // [clearStore.rejected]: () => {
-    //   toast.error("There was an error..");
     // },
   },
 });

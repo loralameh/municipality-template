@@ -20,18 +20,18 @@ export const loginUserThunk = async (url, user, thunkAPI) => {
   }
 };
 
-export const getUsersThunk = async (url, thunkAPI) => {
+export const getUserThunk = async (url, thunkAPI) => {
   try {
     const resp = await customFetch.get(url);
     return resp.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data.msg);
+    return checkForUnauthorizedResponse(error, thunkAPI);
   }
 };
 
-export const updateUserThunk = async ({ userId, user }, thunkAPI) => {
+export const updateUserThunk = async (url, user, thunkAPI) => {
   try {
-    const resp = await customFetch.patch(`/api/users/${userId}`, user);
+    const resp = await customFetch.patch(url, user);
     return resp.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);

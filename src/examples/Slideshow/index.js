@@ -27,7 +27,7 @@ const Slideshow = (props) => {
               className="image-container"
               style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
             >
-              <img src={image} />
+              <img src={image} alt="citizen-service" />
             </div>
           </div>
         ))}
