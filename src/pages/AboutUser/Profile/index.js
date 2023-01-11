@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -223,15 +224,17 @@ function Profile() {
         </Container>
       </Card>
 
-      <EditProfileModal
-        isOpen={openModal}
-        closeModal={() => setOpenModal(false)}
-        data={user}
-        onSubmit={(newData) => {
-          dispatch(updateUser(newData));
-          setOpenModal(false);
-        }}
-      />
+      {openModal && (
+        <EditProfileModal
+          isOpen={openModal}
+          closeModal={() => setOpenModal(false)}
+          data={user}
+          onSubmit={(newData) => {
+            dispatch(updateUser(newData));
+            setOpenModal(false);
+          }}
+        />
+      )}
     </>
   );
 }

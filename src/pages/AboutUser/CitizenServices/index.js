@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -7,22 +7,88 @@ import { Card } from "@mui/material";
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-
+import { IconButton } from "@mui/material";
 // Image & icons
 import bgImage2 from "assets/images/shapes/waves-white.svg";
+import { Edit as EditIcon, DeleteForever as DeleteForeverIcon } from "@mui/icons-material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 //redux call
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserCitizenServices } from "features/citizenService/citizenServiceSlice";
+import Loader from "examples/Loader";
+import { setSnackbar } from "features/snackBar/snackBarSlice";
+import Table from "examples/Table";
 
 function CitizenService() {
-  console.log("hii citizan service");
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { UserCitizenServices, isLoading, snackBarSettings } = useSelector(
+    (store) => store.citizenServices
+  );
 
-  // const { user } = useSelector((store) => store.user);
-  // const { snackBarSettings, isLoading } = useSelector((store) => store.contactUs);
+  useEffect(() => {
+    dispatch(getUserCitizenServices());
+  }, []);
 
+  useEffect(() => {
+    dispatch(setSnackbar(snackBarSettings));
+  }, [snackBarSettings]);
+
+  const columns = [
+    { field: "title", headerName: "Service", flex: 1 },
+    { field: "location", headerName: "Location", flex: 1 },
+    { field: "description", headerName: "Description", flex: 1 },
+    {
+      field: "isPublished",
+      headerName: "Published",
+      type: "boolean",
+      flex: 1,
+    },
+    {
+      field: "action",
+      headerName: "ACTIONS",
+      flex: 0.5,
+      minWidth: 100,
+      renderCell: (params) => {
+        return (
+          <>
+            <IconButton
+              size="small"
+              onClick={() => {
+                // let newTreatments = treatments.filter((t) => t.id != params.row.id);
+                // setTreatments(newTreatments);
+              }}
+            >
+              <EditIcon fontSize="small" />
+            </IconButton>
+            <IconButton
+              size="small"
+              onClick={() => {
+                // let newTreatments = treatments.filter((t) => t.id != params.row.id);
+                // setTreatments(newTreatments);
+              }}
+            >
+              <VisibilityIcon fontSize="small" />
+            </IconButton>
+            <IconButton
+              color="error"
+              size="small"
+              onClick={() => {
+                // let newTreatments = treatments.filter((t) => t.id != params.row.id);
+                // setTreatments(newTreatments);
+              }}
+            >
+              <DeleteForeverIcon color="error" fontSize="small" />
+            </IconButton>
+          </>
+        );
+      },
+    },
+  ];
   return (
     <>
+      {isLoading && <Loader />}
+
       <MKBox
         minHeight="50vh"
         width="100%"
@@ -67,16 +133,20 @@ function CitizenService() {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        <Container>
-          <Grid container spacing={3} alignItems="center">
-            <Grid item xs={12} lg={12}>
-              <Grid container justifyContent="flex-start">
-                <Grid item xs={12} md={4}>
-                  CitizenService
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
+        <Container sx={{ p: 3 }}>
+          {UserCitizenServices.length > 0 && (
+            <Table
+              isLoading={isLoading}
+              columns={columns}
+              rows={UserCitizenServices}
+              getRowId={(row) => row._id}
+            />
+          )}
+          {UserCitizenServices.length == 0 && (
+            <MKBox minHeight="10rem" justifyContent="center" alignItems="center" display="flex">
+              لم يتم اضافة أي خدمات
+            </MKBox>
+          )}
         </Container>
       </Card>
     </>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 // @mui material components
@@ -20,7 +21,7 @@ import MKTypography from "components/MKTypography";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import DefaultInput from "components/LOInput";
-function EditProfileModal(props) {
+function ServiceModal(props) {
   const { closeModal, isOpen, data, onSubmit } = props;
 
   const validation = useFormik({
@@ -148,9 +149,9 @@ function EditProfileModal(props) {
   );
 }
 
-export default EditProfileModal;
+export default ServiceModal;
 
-EditProfileModal.propTypes = {
+ServiceModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   data: PropTypes.object,

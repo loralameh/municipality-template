@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getCitizenServicesThunk,
   getCitizenServiceThunk,
+  getUserCitizenServicesThunk,
 } from "features/citizenService/citizenServiceThunk";
 
 const initialState = {
@@ -13,12 +14,20 @@ const initialState = {
   },
   citizenServices: [],
   citizenService: undefined,
+  UserCitizenServices: [],
 };
 
 export const getCitizenServices = createAsyncThunk(
   "CitizenServices/getAllCitizenServices",
   async (categoryId, thunkAPI) => {
     return getCitizenServicesThunk(`/citizen-service/all?category=${categoryId}`, thunkAPI);
+  }
+);
+
+export const getUserCitizenServices = createAsyncThunk(
+  "CitizenServices/getUserCitizenServices",
+  async (categoryId, thunkAPI) => {
+    return getUserCitizenServicesThunk(`/citizen-service`, thunkAPI);
   }
 );
 
@@ -42,6 +51,18 @@ const citizenServicesSlice = createSlice({
       state.citizenServices = payload;
     },
     [getCitizenServices.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+    },
+
+    [getUserCitizenServices.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getUserCitizenServices.fulfilled]: (state, { payload }) => {
+      console.log(payload);
+      state.isLoading = false;
+      state.UserCitizenServices = payload;
+    },
+    [getUserCitizenServices.rejected]: (state, { payload }) => {
       state.isLoading = false;
     },
 
