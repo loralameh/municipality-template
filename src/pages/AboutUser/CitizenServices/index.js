@@ -20,6 +20,7 @@ import Loader from "examples/AttentionCatchers/Loader";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
 import Table from "examples/Table";
 import ConfirmationModal from "examples/AttentionCatchers/Modals/ConfirmationModal";
+import ViewServiceModal from "./ViewServiceModal";
 
 function CitizenService() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function CitizenService() {
   );
 
   const [openConfirmationModal, setOpenConfirmationModal] = useState([false, undefined]);
+  const [openViewnModal, setOpenViewModal] = useState([false, undefined]);
   useEffect(() => {
     if (UserCitizenServices.length == 0) dispatch(getUserCitizenServices());
   }, []);
@@ -89,8 +91,7 @@ function CitizenService() {
             <IconButton
               size="small"
               onClick={() => {
-                // let newTreatments = treatments.filter((t) => t.id != params.row.id);
-                // setTreatments(newTreatments);
+                setOpenViewModal([true, params.row]);
               }}
             >
               <VisibilityIcon fontSize="small" />
@@ -118,7 +119,6 @@ function CitizenService() {
   return (
     <>
       {isLoading && <Loader />}
-
       <MKBox
         minHeight="50vh"
         width="100%"
@@ -151,7 +151,6 @@ function CitizenService() {
           </Grid>
         </Container>
       </MKBox>
-
       <Card
         sx={{
           p: 2,
@@ -179,7 +178,6 @@ function CitizenService() {
           )}
         </Container>
       </Card>
-
       {openConfirmationModal[0] && (
         <ConfirmationModal
           isOpen={openConfirmationModal[0]}
@@ -187,6 +185,13 @@ function CitizenService() {
           handleSubmit={() => handleDeleteService(openConfirmationModal[1])}
           title="تأكيد الحذف"
           text={`هل انت متأكد انك تريد حذف ${openConfirmationModal[1].title} ؟`}
+        />
+      )}
+      {openViewnModal[0] && (
+        <ViewServiceModal
+          isOpen={openViewnModal[0]}
+          closeModal={() => setOpenViewModal([false, undefined])}
+          data={openViewnModal[1]}
         />
       )}
     </>
