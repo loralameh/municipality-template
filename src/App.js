@@ -24,7 +24,7 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
-import SnackBar from "examples/SnackBar/SnackBar";
+import SnackBar from "examples/AttentionCatchers/SnackBar";
 import SingleMunicipalityService from "pages/Services/MunicipalityServices/SingleService";
 import SingleCitizenService from "pages/Services/CitizenServices/SingleService";
 import Navbar from "examples/Navbars";

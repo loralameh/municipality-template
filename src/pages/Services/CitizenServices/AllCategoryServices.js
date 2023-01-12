@@ -7,7 +7,7 @@ import { getCitizenServices } from "features/citizenService/citizenServiceSlice"
 import { getServiceCategory } from "features/serviceCategory/serviceCategorySlice";
 
 import AllServices from "../sections/AllServices";
-import Loader from "examples/Loader";
+import Loader from "examples/AttentionCatchers/Loader";
 
 function AllCategoryServices() {
   const dispatch = useDispatch();

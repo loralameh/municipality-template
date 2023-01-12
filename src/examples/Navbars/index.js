@@ -8,7 +8,7 @@ import { userRoutes } from "routes";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllServiceCategories } from "features/serviceCategory/serviceCategorySlice";
 import { Outlet } from "react-router";
-import Loader from "examples/Loader";
+import Loader from "examples/AttentionCatchers/Loader";
 import MunicipalityServices from "pages/Services/MunicipalityServices";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import MKBox from "components/MKBox";

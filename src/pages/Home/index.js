@@ -26,7 +26,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
-import Loader from "examples/Loader";
+import Loader from "examples/AttentionCatchers/Loader";
 
 function Home() {
   // const dispatch = useDispatch();

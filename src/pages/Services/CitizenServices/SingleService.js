@@ -21,7 +21,7 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCitizenService } from "features/citizenService/citizenServiceSlice";
-import Loader from "examples/Loader";
+import Loader from "examples/AttentionCatchers/Loader";
 import Slideshow from "examples/Slideshow";
 import SocialButtons from "examples/SocialButtons";
 

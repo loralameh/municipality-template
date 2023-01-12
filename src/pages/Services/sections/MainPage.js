@@ -19,9 +19,10 @@ import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 function MainPage(props) {
+  const { getData } = props;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(props.getData());
+    dispatch(getData());
   }, [dispatch]);
 
   return (

@@ -20,7 +20,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import { useDispatch, useSelector } from "react-redux";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
 import { getUser, updateUser } from "features/user/userSlice";
-import Loader from "examples/Loader";
+import Loader from "examples/AttentionCatchers/Loader";
 import MKButton from "components/MKButton";
 import EditProfileModal from "./EditProfileModal";
 function Profile() {

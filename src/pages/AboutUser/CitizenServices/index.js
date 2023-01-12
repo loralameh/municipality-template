@@ -16,7 +16,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 //redux call
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCitizenServices, deleteService } from "features/citizenService/citizenServiceSlice";
-import Loader from "examples/Loader";
+import Loader from "examples/AttentionCatchers/Loader";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
 import Table from "examples/Table";
 import ConfirmationModal from "examples/AttentionCatchers/Modals/ConfirmationModal";

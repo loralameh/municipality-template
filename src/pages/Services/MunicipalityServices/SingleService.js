@@ -21,7 +21,7 @@ import bgImage2 from "assets/images/shapes/waves-white.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getMunicipalityService } from "features/municipalityService/municipalityServiceSlice";
-import Loader from "examples/Loader";
+import Loader from "examples/AttentionCatchers/Loader";
 
 function SingleService() {
   const dispatch = useDispatch();
