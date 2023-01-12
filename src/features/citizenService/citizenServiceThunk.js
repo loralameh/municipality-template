@@ -29,3 +29,12 @@ export const getCitizenServiceThunk = async (url, thunkAPI) => {
     return checkForUnauthorizedResponse(error, thunkAPI);
   }
 };
+export const deleteServiceThunk = async (url, thunkAPI) => {
+  try {
+    const resp = await customFetch.delete(url);
+    return resp.data;
+  } catch (error) {
+    console.log(error);
+    return checkForUnauthorizedResponse(error, thunkAPI);
+  }
+};

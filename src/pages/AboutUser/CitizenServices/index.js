@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -15,10 +15,11 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 
 //redux call
 import { useDispatch, useSelector } from "react-redux";
-import { getUserCitizenServices } from "features/citizenService/citizenServiceSlice";
+import { getUserCitizenServices, deleteService } from "features/citizenService/citizenServiceSlice";
 import Loader from "examples/Loader";
 import { setSnackbar } from "features/snackBar/snackBarSlice";
 import Table from "examples/Table";
+import ConfirmationModal from "examples/AttentionCatchers/Modals/ConfirmationModal";
 
 function CitizenService() {
   const dispatch = useDispatch();
@@ -26,27 +27,51 @@ function CitizenService() {
     (store) => store.citizenServices
   );
 
+  const [openConfirmationModal, setOpenConfirmationModal] = useState([false, undefined]);
   useEffect(() => {
-    dispatch(getUserCitizenServices());
+    if (UserCitizenServices.length == 0) dispatch(getUserCitizenServices());
   }, []);
+
+  useEffect(() => {
+    if (UserCitizenServices.length == 0) dispatch(getUserCitizenServices());
+  }, [UserCitizenServices]);
 
   useEffect(() => {
     dispatch(setSnackbar(snackBarSettings));
   }, [snackBarSettings]);
 
   const columns = [
-    { field: "title", headerName: "Service", flex: 1 },
-    { field: "location", headerName: "Location", flex: 1 },
-    { field: "description", headerName: "Description", flex: 1 },
+    {
+      field: "title",
+      headerName: "الخدمة",
+      type: "string",
+
+      flex: 1,
+    },
+    {
+      field: "location",
+      headerName: "المكان",
+      type: "string",
+
+      flex: 1,
+    },
+    {
+      field: "description",
+      headerName: "الوصف",
+      type: "string",
+
+      flex: 1,
+    },
     {
       field: "isPublished",
-      headerName: "Published",
+      headerName: "تم النشر",
       type: "boolean",
       flex: 1,
     },
     {
       field: "action",
-      headerName: "ACTIONS",
+      type: "actions",
+      headerName: "",
       flex: 0.5,
       minWidth: 100,
       renderCell: (params) => {
@@ -74,8 +99,7 @@ function CitizenService() {
               color="error"
               size="small"
               onClick={() => {
-                // let newTreatments = treatments.filter((t) => t.id != params.row.id);
-                // setTreatments(newTreatments);
+                setOpenConfirmationModal([true, params.row]);
               }}
             >
               <DeleteForeverIcon color="error" fontSize="small" />
@@ -85,6 +109,12 @@ function CitizenService() {
       },
     },
   ];
+
+  const handleDeleteService = (service) => {
+    console.log(service._id);
+    dispatch(deleteService(service._id));
+    setOpenConfirmationModal([false, undefined]);
+  };
   return (
     <>
       {isLoading && <Loader />}
@@ -149,6 +179,16 @@ function CitizenService() {
           )}
         </Container>
       </Card>
+
+      {openConfirmationModal[0] && (
+        <ConfirmationModal
+          isOpen={openConfirmationModal[0]}
+          closeModal={() => setOpenConfirmationModal([false, undefined])}
+          handleSubmit={() => handleDeleteService(openConfirmationModal[1])}
+          title="تأكيد الحذف"
+          text={`هل انت متأكد انك تريد حذف ${openConfirmationModal[1].title} ؟`}
+        />
+      )}
     </>
   );
 }

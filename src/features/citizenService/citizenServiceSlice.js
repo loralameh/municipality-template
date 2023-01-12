@@ -3,6 +3,7 @@ import {
   getCitizenServicesThunk,
   getCitizenServiceThunk,
   getUserCitizenServicesThunk,
+  deleteServiceThunk,
 } from "features/citizenService/citizenServiceThunk";
 
 const initialState = {
@@ -26,7 +27,8 @@ export const getCitizenServices = createAsyncThunk(
 
 export const getUserCitizenServices = createAsyncThunk(
   "CitizenServices/getUserCitizenServices",
-  async (categoryId, thunkAPI) => {
+  async (thunkAPI) => {
+    console.log("getUserCitizenServices called");
     return getUserCitizenServicesThunk(`/citizen-service`, thunkAPI);
   }
 );
@@ -35,6 +37,12 @@ export const getCitizenService = createAsyncThunk(
   "CitizenServices/getSinglecitizenService",
   async (serviceId, thunkAPI) => {
     return getCitizenServiceThunk(`/citizen-service/${serviceId}`, thunkAPI);
+  }
+);
+export const deleteService = createAsyncThunk(
+  "CitizenServices/deleteService",
+  async (serviceId, thunkAPI) => {
+    return deleteServiceThunk(`/citizen-service/${serviceId}`, thunkAPI);
   }
 );
 
@@ -75,6 +83,27 @@ const citizenServicesSlice = createSlice({
     },
     [getCitizenService.rejected]: (state, { payload }) => {
       state.isLoading = false;
+    },
+
+    [deleteService.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [deleteService.fulfilled]: (state, { payload }) => {
+      state.UserCitizenServices = [];
+      state.isLoading = false;
+      state.snackBarSettings = {
+        open: true,
+        type: "success",
+        message: `تم الحذف`,
+      };
+    },
+    [deleteService.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.snackBarSettings = {
+        open: true,
+        type: "error",
+        message: `${payload} `,
+      };
     },
   },
 });

@@ -27,15 +27,23 @@ function ServiceModal(props) {
   const validation = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: "",
-      education: "",
-      address: "",
-      phoneNumber: "",
-      career: "",
+      title: "",
+      description: "",
+      isPublished: "",
+      location: "",
+      fbLink: "",
+      instaLink: "",
+      linkedInLink: "",
+      githubLink: "",
+      twitterLink: "",
+      whatsAppLink: "",
+      website: "",
+
+      pictureGallery: [],
       ...data,
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("الاسم مطلوب"),
+      title: Yup.string().required("اسم الخدمة مطلوب"),
     }),
     onSubmit: (values) => {
       console.log(values);
