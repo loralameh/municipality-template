@@ -40,7 +40,7 @@ function ViewServiceModal(props) {
           <MKBox p={2}>
             {data && (
               <Container>
-                {data.pictureGallery && <Slideshow images={data.pictureGallery} />}
+                {data.pictureGallery.length > 0 && <Slideshow images={data.pictureGallery} />}
                 <MKBox lineHeight={1} my={1}>
                   <MKTypography display="block" variant="h4" fontWeight="bold" mb={0.5}>
                     {data.title}

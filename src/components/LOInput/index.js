@@ -1,16 +1,7 @@
 import React from "react";
 import { TextField } from "@mui/material";
-const DefaultInput = ({
-  required,
-  label,
-  name,
-  autoFocus,
-  value,
-  onChange,
-  error,
-  helperText,
-  type,
-}) => {
+const DefaultInput = (props) => {
+  const { required, label, name, autoFocus, value, onChange, error, helperText, type } = props;
   return (
     <TextField
       margin="normal"
@@ -25,6 +16,7 @@ const DefaultInput = ({
       onChange={onChange}
       error={error}
       helperText={helperText}
+      {...props}
     />
   );
 };

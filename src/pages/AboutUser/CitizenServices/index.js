@@ -21,6 +21,8 @@ import { setSnackbar } from "features/snackBar/snackBarSlice";
 import Table from "examples/Table";
 import ConfirmationModal from "examples/AttentionCatchers/Modals/ConfirmationModal";
 import ViewServiceModal from "./ViewServiceModal";
+import EditServiceModal from "./EditServiceModal";
+import MKButton from "components/MKButton";
 
 function CitizenService() {
   const dispatch = useDispatch();
@@ -30,13 +32,14 @@ function CitizenService() {
 
   const [openConfirmationModal, setOpenConfirmationModal] = useState([false, undefined]);
   const [openViewnModal, setOpenViewModal] = useState([false, undefined]);
+  const [openEditModal, setOpenEditModal] = useState([false, undefined]);
   useEffect(() => {
     if (UserCitizenServices.length == 0) dispatch(getUserCitizenServices());
   }, []);
 
-  useEffect(() => {
-    if (UserCitizenServices.length == 0) dispatch(getUserCitizenServices());
-  }, [UserCitizenServices]);
+  // useEffect(() => {
+  //   if (UserCitizenServices.length == 0) dispatch(getUserCitizenServices());
+  // }, [UserCitizenServices]);
 
   useEffect(() => {
     dispatch(setSnackbar(snackBarSettings));
@@ -82,8 +85,7 @@ function CitizenService() {
             <IconButton
               size="small"
               onClick={() => {
-                // let newTreatments = treatments.filter((t) => t.id != params.row.id);
-                // setTreatments(newTreatments);
+                setOpenEditModal([true, params.row]);
               }}
             >
               <EditIcon fontSize="small" />
@@ -116,6 +118,9 @@ function CitizenService() {
     dispatch(deleteService(service._id));
     setOpenConfirmationModal([false, undefined]);
   };
+
+  const handleEditService = () => {};
+  const handleAddService = () => {};
   return (
     <>
       {isLoading && <Loader />}
@@ -163,6 +168,17 @@ function CitizenService() {
         }}
       >
         <Container sx={{ p: 3 }}>
+          <MKButton
+            variant="gradient"
+            color="info"
+            onClick={() => {
+              setOpenEditModal([true, undefined]);
+            }}
+          >
+            إضافة خدمة
+          </MKButton>
+        </Container>
+        <Container sx={{ p: 3 }}>
           {UserCitizenServices.length > 0 && (
             <Table
               isLoading={isLoading}
@@ -192,6 +208,15 @@ function CitizenService() {
           isOpen={openViewnModal[0]}
           closeModal={() => setOpenViewModal([false, undefined])}
           data={openViewnModal[1]}
+        />
+      )}
+      {openEditModal[0] && (
+        <EditServiceModal
+          isOpen={openEditModal[0]}
+          closeModal={() => setOpenEditModal([false, undefined])}
+          data={openEditModal[1]}
+          onEdit={handleEditService}
+          onAdd={handleAddService}
         />
       )}
     </>
