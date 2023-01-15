@@ -69,11 +69,7 @@ function Bills() {
         <Container>
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} lg={12}>
-              <Grid container justifyContent="flex-start">
-                <Grid item xs={12} md={4}>
-                  checkbox here
-                </Grid>
-              </Grid>
+              here
             </Grid>
           </Grid>
         </Container>

@@ -10,7 +10,7 @@ const DefaultInput = (props) => {
       label={label}
       name={name}
       type={type}
-      autoComplete="email"
+      // autoComplete="email"
       autoFocus={autoFocus}
       value={value}
       onChange={onChange}

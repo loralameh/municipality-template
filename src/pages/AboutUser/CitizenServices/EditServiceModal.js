@@ -27,6 +27,8 @@ import { TextField, MenuItem } from "@mui/material";
 //redux call
 import { useDispatch, useSelector } from "react-redux";
 import { getAllServiceCategories } from "features/serviceCategory/serviceCategorySlice";
+import styled from "@emotion/styled";
+
 function EditServiceModal(props) {
   const { closeModal, isOpen, data, onAdd, onEdit } = props;
   const dispatch = useDispatch();
@@ -80,7 +82,7 @@ function EditServiceModal(props) {
           <MKBox p={2}>
             <MKBox component="form" role="form">
               <Grid container spacing={2}>
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     required={true}
                     label="الاسم"
@@ -92,8 +94,10 @@ function EditServiceModal(props) {
                     helperText={validation.touched.title && validation.errors.title}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
-                  <TextField
+                <Grid item xs={12} md={6}>
+                  <MySelect
+                    margin="normal"
+                    id="mySelect"
                     label="الفئة"
                     name="category"
                     select={true}
@@ -110,9 +114,9 @@ function EditServiceModal(props) {
                         </MenuItem>
                       );
                     })}
-                  </TextField>
+                  </MySelect>
                 </Grid>
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12}>
                   <DefaultInput
                     label="شرح/تفاصيل الخدمة"
                     name="description"
@@ -124,7 +128,7 @@ function EditServiceModal(props) {
                     helperText={validation.touched.description && validation.errors.description}
                   />
                 </Grid>
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     label="رقم  whatsapp إذا توفر"
                     name="whatsAppLink"
@@ -136,7 +140,7 @@ function EditServiceModal(props) {
                     helperText={validation.touched.whatsAppLink && validation.errors.whatsAppLink}
                   />
                 </Grid>
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     name="servicePhoneNumber"
                     label="الهاتف"
@@ -151,7 +155,7 @@ function EditServiceModal(props) {
                     }
                   />
                 </Grid>
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     label="العنوان "
                     name="location"
@@ -161,7 +165,7 @@ function EditServiceModal(props) {
                     helperText={validation.touched.location && validation.errors.location}
                   />
                 </Grid>
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     name="website"
                     label="رابط الموقع الالكتروني إذا توفر"
@@ -172,7 +176,7 @@ function EditServiceModal(props) {
                   />
                 </Grid>
 
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     name="fbLink"
                     label="رابط صفحة  Facebook إذا توفر"
@@ -182,7 +186,7 @@ function EditServiceModal(props) {
                     helperText={validation.touched.fbLink && validation.errors.fbLink}
                   />
                 </Grid>
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     name="instaLink"
                     label="رابط صفحة  Instagram إذا توفر"
@@ -192,7 +196,7 @@ function EditServiceModal(props) {
                     helperText={validation.touched.instaLink && validation.errors.instaLink}
                   />
                 </Grid>
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     name="linkedInLink"
                     label="رابط صفحة  Linkedin إذا توفر"
@@ -204,7 +208,7 @@ function EditServiceModal(props) {
                     helperText={validation.touched.linkedInLink && validation.errors.linkedInLink}
                   />
                 </Grid>
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     name="linkedInLink"
                     label="رابط صفحة  Linkedin إذا توفر"
@@ -217,7 +221,7 @@ function EditServiceModal(props) {
                   />
                 </Grid>
 
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     name="githubLink"
                     label="رابط صفحة  Github إذا توفر"
@@ -227,7 +231,7 @@ function EditServiceModal(props) {
                     helperText={validation.touched.githubLink && validation.errors.githubLink}
                   />
                 </Grid>
-                <Grid item sx={12} md={6}>
+                <Grid item xs={12} md={6}>
                   <DefaultInput
                     name="twitterLink"
                     label="رابط صفحة  Twitter إذا توفر"
@@ -279,3 +283,18 @@ EditServiceModal.propTypes = {
   data: PropTypes.object,
   onSubmit: PropTypes.func,
 };
+
+const MySelect = styled(TextField)(({ theme }) => ({
+  // ".MuiSelect-select": {
+  //   padding: "18px 0.75rem !important",
+  // },
+  // ".MuiOutlinedInput-input": {
+  //   padding: "18px 0.75rem !important",
+  // },
+  // ".MuiSelect-outlined ": {
+  //   padding: "18px 0.75rem !important",
+  // },
+  "#mySelect": {
+    padding: "0.75rem !important",
+  },
+}));
